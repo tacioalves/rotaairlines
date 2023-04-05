@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+
+.estilo-background-nav {
+    background-color: #024959;
+    height: 75px;
+}
+
+
+.estilo-background-nav #tituloNav {
+    font-size: 25px;
+    margin-left: 50px;
+    line-height: 1
+    
+}
+
+
+.estilo-background-nav a {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#container-Inicio {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: #026773;
+    color: white;
+}
+
+#container-meio{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center; 
+}
+
+#container-pesquisa-voo {
+    border-radius: 20px;
+    background-color: white;
+    color: white;
+    height: 250px;
+    width: 100vw;
+    position: absolute;
+  /*  top: 400px;
+    left: 20%; */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    color: black;
+
+
+}
+
+
+
+.form-select {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.btn-custom {
+    width: 300px;
+    background-color: #026773 !important;
+    border-color: #026773 !important;
+}
+
+#formDestino{
+    transform: scale(1.13);
+}
