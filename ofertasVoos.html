@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Rota AirLines</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <!-- MENU SUPERIOR -->
+  <nav class="navbar navbar-expand-sm navbar-dark estilo-background-nav">
+    <!-- Brand -->
+    <a class="navbar-brand" href="index.html" id="tituloNav">ROTA<br>Airlines</a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Ofertas e destinos
+        </a>
+        <div class="dropdown-menu ">
+          <a class="dropdown-item" href="#">Ofertas de voos</a>
+          <a class="dropdown-item" href="#">Destinos</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle custom-nav-text nav-text-Custom" href="#" id="navbardrop"
+          data-toggle="dropdown">
+          Minhas Viagens
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Checkin</a>
+          <a class="dropdown-item" href="#">Meus Destinos</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="glyphicon glyphicon-log-in"></span> Fazer Login</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- CONTEUDO PRINCIPAL -->
+  <div class="container" style="position: relative;">
+    <img class="img-banner" src="src/bannerSsa.jpg">
+    <div class="texto-banner">
+      <h1>Promoções <br>ROTA Airlines</h1>
+      <p>Viaje nas próximas férias!</p>
+    </div>
+  </div>
+
+
+  <!-- Voos mais procurados -->
+
+  <div class="container" style="margin-top: 60px; background-color: #E3E7FB; border-radius: 20px;">
+    <br>
+    <h2 style="text-align: center;">Voos mais procurados</h2>
+    <div class="card-columns" style="margin-top: 30px;">
+
+       <!-- CARD -->
+      <div class="card bg-light">
+        <div class="card-body text-center">
+          <p class="card-text">
+          <h5 style="text-align: left;">De Brasilia a</h5>
+          <h4 style="text-align: left;">Rio de Janeiro</h4>
+          <div style="background-color: #026773;" class="card-horizontal-style">
+            <a>Ida e Volta</a>
+          </div>
+          <div style="background-color: #027895;" class="card-horizontal-style">
+            <a>Economica</a>
+          </div>
+          <div style="background-color: #029895;" class="card-horizontal-style">
+            <a>Data: 08/05/2023</a>
+          </div><br>
+          <a>Preço a partir de:</a>
+          <h4 style="font-weight: bold;">BRL 332,27</h4>
+          <a>Taxas incluidas</a>
+          </p>
+          <button class="btn btn-primary btn-custom">Comprar</button>
+        </div>
+      </div>
+
+       <!-- CARD -->
+      <div class="card bg-light">
+        <div class="card-body text-center">
+          <p class="card-text">
+          <h5 style="text-align: left;">De Salvador a</h5>
+          <h4 style="text-align: left;">Porto Seguro</h4>
+          <div style="background-color: #026773;" class="card-horizontal-style">
+            <a>Ida e Volta</a>
+          </div>
+          <div style="background-color: #027895;" class="card-horizontal-style">
+            <a>Economica</a>
+          </div>
+          <div style="background-color: #029895;" class="card-horizontal-style">
+            <a>Data: 25/04/2023</a>
+          </div><br>
+          <a>Preço a partir de:</a>
+          <h4 style="font-weight: bold;">BRL 358,97</h4>
+          <a>Taxas incluidas</a>
+          </p>
+          <button class="btn btn-primary btn-custom">Comprar</button>
+        </div>
+      </div>
+
+       <!-- CARD -->
+      <div class="card bg-light">
+        <div class="card-body text-center">
+          <p class="card-text">
+          <h5 style="text-align: left;">De São Paulo a</h5>
+          <h4 style="text-align: left;">Lisboa</h4>
+          <div style="background-color: #026773;" class="card-horizontal-style">
+            <a>Ida e Volta</a>
+          </div>
+          <div style="background-color: #027895;" class="card-horizontal-style">
+            <a>Economica</a>
+          </div>
+          <div style="background-color: #029895;" class="card-horizontal-style">
+            <a>Data: 10/10/2023</a>
+          </div>
+          <br>
+          <a>Preço a partir de:</a>
+          <h4 style="font-weight: bold;">BRL 6.304,25</h4>
+          <a>Taxas incluidas</a>
+          </p>
+          <button class="btn btn-primary btn-custom">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+
+  <!-- CARDS Horizontais -->
+  <div class="container">
+
+
+    <!-- CARD -->
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="src/Portoalegre.png" class="card-img">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6>De São Paulo a</h6>
+            <h5 class="card-title">Porto Alegre</h5>
+            <div class="d-flex my-3">
+              <div style="background-color: #026773;" class="p-2 align-self-center mr-2 card-horizontal-style">
+                <a>Ida e Volta</a>
+              </div>
+              <div style="background-color: #027895;" class="p-2 align-self-center mr-2 card-horizontal-style">
+                <a>Economica</a>
+              </div>
+              <div style="background-color: #029895;" class="p-2 align-self-center card-horizontal-style">
+                <a>Data: 01/01/2024 </a>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <a>Preço a partir de:</a>
+                <h4 style="font-weight: bold;">BRL 902,00</h4>
+              </div>
+              <a href="#" class="btn btn-primary btn-custom" style="height: 60%;">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+
+
+    <!-- CARD -->
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="src/fortaleza.jpg" class="card-img">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6>De Brasilia a</h6>
+            <h5 class="card-title">Fortaleza</h5>
+            <div class="d-flex my-3">
+              <div style="background-color: #026773;" class="p-2 align-self-center mr-2 card-horizontal-style">
+                <a>Ida e Volta</a>
+              </div>
+              <div style="background-color: #027895;" class="p-2 align-self-center mr-2 card-horizontal-style">
+                <a>Economica</a>
+              </div>
+              <div style="background-color: #029895;" class="p-2 align-self-center card-horizontal-style">
+                <a>Data: 01/01/2024 </a>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <a>Preço a partir de:</a>
+                <h4 style="font-weight: bold;">BRL 670,25</h4>
+              </div>
+              <a href="#" class="btn btn-primary btn-custom" style="height: 60%;">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+
+
+    <!-- CARD -->
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="src/vitoria.jpg" class="card-img">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6>De São Paulo a</h6>
+            <h5 class="card-title">Vitória</h5>
+            <div class="d-flex my-3">
+              <div style="background-color: #026773;" class="p-2 align-self-center mr-2 card-horizontal-style">
+                <a>Ida e Volta</a>
+              </div>
+              <div style="background-color: #027895;" class="p-2 align-self-center mr-2 card-horizontal-style">
+                <a>Economica</a>
+              </div>
+              <div style="background-color: #029895;" class="p-2 align-self-center card-horizontal-style">
+                <a>Data: 01/01/2024 </a>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <a>Preço a partir de:</a>
+                <h4 style="font-weight: bold;">BRL 920,10</h4>
+              </div>
+              <a href="#" class="btn btn-primary btn-custom" style="height: 60%;">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+
+
+    <!-- CARD -->
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="src/salvadorPhoto.jpg" class="card-img">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6>De Fortaleza a </h6>
+            <h5 class="card-title">Salvador</h5>
+            <div class="d-flex my-3">
+              <div style="background-color: #026773;" class="p-2 align-self-center mr-2 card-horizontal-style">
+                <a>Ida e Volta</a>
+              </div>
+              <div style="background-color: #027895;" class="p-2 align-self-center mr-2 card-horizontal-style">
+                <a>Economica</a>
+              </div>
+              <div style="background-color: #029895;" class="p-2 align-self-center card-horizontal-style">
+                <a>Data: 01/01/2024 </a>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <a>Preço a partir de:</a>
+                <h4 style="font-weight: bold;">BRL 6.304,25</h4>
+              </div>
+              <a href="#" class="btn btn-primary btn-custom" style="height: 60%;">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  </div>
+  <br><br><br>
+  <footer>
+    <a>ROTA AIRLINES</a>
+  </footer>
+</body>
+
+</html>
