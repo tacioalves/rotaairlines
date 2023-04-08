@@ -37,7 +37,7 @@
           Minhas Viagens
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Checkin</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Checkin</a>
           <a class="dropdown-item" href="#">Meus Destinos</a>
         </div>
       </li>
@@ -48,6 +48,42 @@
       </li>
     </ul>
   </nav>
+
+  <!-- CHECKIN -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Pronto para iniciar seu check-in?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="/action_page.php">
+            <div class="form-group">
+              <label for="email">Buscar Reserva por:</label>
+              <input type="text" value="Codigo da Reserva + Origem" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Código da Reserva</label>
+              <input type="text" class="form-control" id="pwd" placeholder="Digite o Código da Reserva"
+                name="cdReserva">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Origem</label>
+              <input type="text" class="form-control" id="pwd" placeholder="Digite a Origem" name="origem">
+            </div><br>
+            <button type="submit" class="btn btn-primary btn-custom" style="width: 100%;">Iniciar Chek-in</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- BANNER PRINCIPAL -->
   <div class="container-fluid" id="container-Inicio">
@@ -68,7 +104,7 @@
   </div>
 
 
-    <!-- Pesquisa Voo -->
+  <!-- Pesquisa Voo -->
   <div id="container-meio">
     <div class="container" id="container-pesquisa-voo">
       <div class="row" style="margin-left: 7%;">
