@@ -28,8 +28,7 @@
         </a>
         <div class="dropdown-menu ">
           <a class="dropdown-item" href="ofertasVoos.html">Ofertas de voos</a>
-          <a class="dropdown-item" href="#">Destinos</a>
-        </div>
+          <a class="dropdown-item" href="destinos.html">Destinos</a>        </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle custom-nav-text nav-text-Custom" href="#" id="navbardrop"
@@ -60,7 +59,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="/action_page.php">
+          <form action="checkin.html">
             <div class="form-group">
               <label for="email">Buscar Reserva por:</label>
               <input type="text" value="Codigo da Reserva + Origem" class="form-control" readonly>
@@ -81,8 +80,10 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
+
     </div>
-  </div><br><br>
+  </div>
+  <br><br>
 
   <div class="container">
     <h2>Confirmação Checkin</h2><br>
@@ -92,7 +93,7 @@
     <div class="row">
       <div class="col-sm-6">
         <h5 style="font-weight: bold;">Marcação de Assento</h5><br>
-        <img src="src/salvadorPhoto.jpg" style="width: 400px; border-radius: 20px;">
+        <img src="src/assentos.png" style="width: 400px; border-radius: 20px;">
         <br><br>
         <h6 style="font-weight: bold; color: green; margin-left: 24%;">Assento Confirmado</h6>
         <button class="btn btn-primary btn-custom" style="height: 50px; margin-top: 20px; margin-left: 10%;"
@@ -100,15 +101,16 @@
       </div>
       <div class="col-sm-6">
         <h5 style="font-weight: bold;">Bagagem Despachada</h5><br>
-        <img src="src/salvadorPhoto.jpg" style="width: 400px; border-radius: 20px;">
-        <button class="btn btn-primary btn-custom" style="height: 50px; margin-top: 20px; margin-left: 10%;"
+        <img src="src/bagagem.png" style="width: 400px; border-radius: 100px;">
+        <button class="btn btn-primary btn-custom" style="height: 50px; margin-top: 70px; margin-left: 10%;"
           onclick="window.location.href='checkin2.html'">Adquirir Bagagem</button>
       </div>
     </div>
   </div>
 
   <div class="container-fluid d-flex align-items-center justify-content-center" style="margin-top: 100px;">
-    <button class="btn btn-primary btn-custom" style="height: 80px;" onclick="window.location.href='ResumoCheckin.html'">Continuar para Finalizar</button>
+    <button class="btn btn-primary btn-custom" style="height: 80px;"
+      onclick="window.location.href='ResumoCheckin.html'">Continuar para Finalizar</button>
   </div>
 
   <footer style="margin-top: 100px;">
