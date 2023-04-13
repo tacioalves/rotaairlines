@@ -135,6 +135,18 @@ body {
     margin-top: 5px;
 }
 
+.checkCheckin{
+    transform: scale(1.5);
+}
+
+.container-resumo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
 footer {
     position: absolute;
     bottom: 100;
@@ -145,3 +157,5 @@ footer {
     text-align: center;
     line-height: 100px;
 }
+
+
