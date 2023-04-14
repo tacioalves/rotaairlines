@@ -28,7 +28,8 @@
         </a>
         <div class="dropdown-menu ">
           <a class="dropdown-item" href="ofertasVoos.html">Ofertas de voos</a>
-          <a class="dropdown-item" href="destinos.html">Destinos</a>        </div>
+          <a class="dropdown-item" href="destinos.html">Destinos</a>
+        </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle custom-nav-text nav-text-Custom" href="#" id="navbardrop"
@@ -83,37 +84,71 @@
 
     </div>
   </div>
-  <br><br>
+
 
   <div class="container">
-    <h2>Confirmação Checkin</h2><br>
-    <h5>Codigo da Reserva: HPRFIF </h5><br>
-    <h6 style="font-weight: bold;">Detalhes do Voo</h6><br>
-    <br><br><br>
-    <div class="row">
-      <div class="col-sm-6">
-        <h5 style="font-weight: bold;">Marcação de Assento</h5><br>
-        <img src="src/assentos.png" style="width: 400px; border-radius: 20px;">
-        <br><br>
-        <h6 style="font-weight: bold; color: green; margin-left: 24%;">Assento Confirmado</h6>
-        <button class="btn btn-primary btn-custom" style="height: 50px; margin-top: 20px; margin-left: 10%;"
-          onclick="window.location.href='checkinMarcaAssento.html'">Alterar seu Assento</button>
+    <br>
+    <h2>Suas Proximas Viagens</h2>
+    <br><br>
+    <br>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <p style="font-weight: bold">Guarulhos - Salvador</p>
+            <p>Reserva: N82NPC</p>
+          </div>
+          <div class="col">
+            <h4 stylAF e="margin-top: 0; margin-bottom: 0.5em;">SSA ➜ GRU</h2>
+              <p style="font-weight: bold">Quinta, 10/05/2023, 10:40</p>
+          </div>
+          <div class="col" style="text-align: center;">
+            <button class="btn btn-primary btn-custom" onclick="alert('Checkin Ainda Não Disponivel')">Realizar
+              Checkin</button>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-6">
-        <h5 style="font-weight: bold;">Bagagem Despachada</h5><br>
-        <img src="src/bagagem.png" style="width: 400px; border-radius: 100px;">
-        <button class="btn btn-primary btn-custom" style="height: 50px; margin-top: 70px; margin-left: 10%;"
-          onclick="window.location.href='checkin2.html'">Adquirir Bagagem</button>
+    </div><br>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <p style="font-weight: bold">Salvador - Fortaleza</p>
+            <p>Reserva: NF2NPC</p>
+          </div>
+          <div class="col">
+            <h4 stylAF e="margin-top: 0; margin-bottom: 0.5em;">SSA ➜ FOR</h2>
+              <p style="font-weight: bold">Domingo, 14/05/2023, 09:35</p>
+          </div>
+          <div class="col" style="text-align: center;">
+            <button class="btn btn-primary btn-custom" onclick="alert('Checkin Ainda Não Disponivel')">Realizar
+              Checkin</button>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <p style="font-weight: bold">São Paulo - Guarulhos</p>
+            <p>Reserva: NF2NPC</p>
+          </div>
+          <div class="col">
+            <h4 stylAF e="margin-top: 0; margin-bottom: 0.5em;">REC ➜ GRU</h2>
+              <p style="font-weight: bold">Terça, 07/03/2023, 13:35</p>
+          </div>
+          <div class="col" style="text-align: center;">
+            <p style="font-weight: bold; color: green;">Concluido</p>
+            <button class="btn btn-primary btn-custom"
+              onclick="alert('Não é possivel verificar os detalhes no momento')">Detalhes do Voo</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="container-fluid d-flex align-items-center justify-content-center" style="margin-top: 100px;">
-    <button class="btn btn-primary btn-custom" style="height: 80px;"
-      onclick="window.location.href='ResumoCheckin.html'">Continuar para Finalizar</button>
-  </div>
-
-  <footer style="margin-top: 100px;">
+  <br><br><br>
+  <footer>
     <a>ROTA AIRLINES</a>
   </footer>
 </body>
