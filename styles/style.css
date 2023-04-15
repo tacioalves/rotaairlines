@@ -4,6 +4,13 @@ body {
     font-family: 'Muli', sans-serif;
   }
 
+.coluna1{
+    width:50%;
+}
+coluna2{
+    width:50%
+}
+
 .estilo-background-nav {
     background-color: #024959;
     height: 75px;
@@ -115,6 +122,10 @@ body {
     filter: blur(1px) brightness(0.5);
 }
 
+.img-card{
+    width: "5"; 
+    height: "5"; 
+}
 
 .texto-banner{
     position: absolute; 
