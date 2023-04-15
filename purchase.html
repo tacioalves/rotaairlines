@@ -87,12 +87,12 @@
   <br>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4" style="text-align: center;">
               <div class="card">              
                 <div style="background-color: #026773;" class="card-header text-white">Pagamento:</div>
                 <div class="card-body">
-                  <p><font size = "4">Selecione a bandeira do seu cartão de crédito:</font></p>
-            <div text-align:center><form style>
+                  <p style = "font-size: 4;">Selecione a bandeira do seu cartão de crédito:</p>
+            <div><form style>
               <label class="radio-inline">
                 <input type="radio" name="card" value="visa" id="visa"><img src="src/visa_logo.png" width = "30" height = "12">
               </label>
@@ -113,27 +113,27 @@
                   <form>
                     <div class="form-group">
                       <label for="text">Número do cartão:</label>
-                      <input type="text" class="form-control" max id="numCartao" maxlength="16" style="width:200px" style="text-align: center;" placeholder="Digite apenas números">
+                      <input type="text" class="form-control" max id="numCartao" maxlength="16" style="width:200px; margin-left: 169px;" placeholder="Digite apenas números">
                     </div>
                     <div class="form-group">
                       <label for="text">Nome do titular:</label>
-                      <input type="text" class="form-control" max id="nomeTitular" style="width:500px" style="text-align: center;" placeholder="Digite o nome conforme o cartão">
+                      <input type="text" class="form-control" id="nomeTitular" style="width:500px; margin-left: 20px;" placeholder="Digite o nome conforme o cartão">
                     </div>
                     <div class="form-group">
                       <label for="text">CPF:</label>
-                      <input type="text" class="form-control" max id="cpf" maxlength="11" style="width:500px" style="text-align: center;" placeholder="Digite apenas números">
+                      <input type="text" class="form-control" max id="cpf" maxlength="11" style="width:500px; margin-left: 20px;" style="text-align: center;" placeholder="Digite apenas números">
                     </div>
                     <div class="form-group">
                       <label for="text">Código de Segurança:</label>
-                      <input type="text" class="form-control" max id="cvv" maxlength="3" style="width:100px" style="text-align: center;" placeholder="CVV">
+                      <input type="text" class="form-control" max id="cvv" maxlength="3" style="width:70px; margin-left: 238px;" style="text-align: center;" placeholder="CVV">
                     </div>
                     <div class="form-group">
                       <label for="text">Endereço da fatura:</label>
-                      <input type="text" class="form-control" max id="endereçoFatura" style="width:500px" style="text-align: center;" placeholder="Digite o endereço completo">
+                      <input type="text" class="form-control" max id="endereçoFatura" style="width:500px; margin-left: 20px;" style="text-align: center;" placeholder="Digite o endereço completo">
                     </div>
                     <div class="form-group">
                       <label for="text">CEP:</label>
-                      <input type="text" class="form-control" max id="cep" maxlength="8" style="width:200px" style="text-align: center;" placeholder="Apenas números">
+                      <input type="text" class="form-control" max id="cep" maxlength="8" style="width:200px; margin-left: 169px;" style="text-align: center;" placeholder="Apenas números">
                     </div>
                         <p>Número de parcelas:</p>
                         <select>
@@ -142,30 +142,89 @@
                         <option value ="3x">3x de 947,37 (com juros)</option>
                       </select>
                      </div>
-                     <div style="text-align: center;">
-                    <button type="submit" class="btn btn-success active btn-custom">Efetuar pagamento</button>
-                    </div> 
-                  </div>
-                </div>
+
+                    </div>
+                    </div>
+                    </form>
+
+                      
+      <div class="col-sm-4">
+            <div class="card">              
+            <div style="background-color: #026773; text-align: center;" class="card-header text-white">Resumo do seu pedido:</div><br>
+            <div style="text-align: center;">
+              <img src="src/aviaoIcone.png" width = "50" height = "50"><label for="text">Número do pedido #1651651231</label><br>
+            <label for="text"><strong>Dados do pedido:</strong></label><br>
+            <label for="text">REC ➜ SSA</label><br> 
+            <label for="text">Origem: Recife ----- Vôo com saída às 19:40 do dia 10/05/2023</label><br>
+            <label for="text">Destino: Salvador -------- Chegada às 21:10 do dia 10/05/2023</label>
+            <label for="text">Classe diamante</label><br>
+            <label for="text">Valor: R$ 2743,27</label><br>
+            <label for="text">Sem bagagem despachada</label><br>
+            <label for="text">Código da reserva: <strong>HPRFIF</strong></label><br>
+            <label for="text">Vôo de nº <strong>RO3356</strong></label><br>
+            <label for="text">Início do embarque: <strong>18:50</strong></label><br>
+            <label for="text">Fim do embarque: <strong>19:25</strong></label><br>
+            <form>
+              <div class="form-group">
+                <label for="text">Passageiro:</label>
+                <input type="text" class="form-control" max id="passageiro" maxlength="100" placeholder="Confirme o nome do passageiro">
               </div>
+              <div class="form-group">
+                <label for="text">CPF Passageiro:</label>
+                <input type="text" class="form-control" id="cpfPassageiro" maxlength="11" placeholder="Digite o CPF do passageiro">
+              </div>
+              <div class="form-group">
+                <label for="text">Celular:</label>
+                <input type="text" class="form-control" id="cpfPassageiro" placeholder="Digite o número do seu celular">
+              </div>
+              <div class="form-group">
+                <label for="text">Contato de emergência:</label>
+                <input type="text" class="form-control" id="contatoEmergencia" placeholder="Digite o nome do contato">
+              </div>
+              <div class="form-group">
+                <label for="text">Telefone do contato:</label>
+                <input type="text" class="form-control" id="telContato" placeholder="Digite o telefone com DDD">
+              </div>
+
+          </div>  
+          </div> 
+        </div>
+        <div class="col-sm-4">
+          <div class="card">
+            <div style="background-color: #026773; text-align: center;" class="card-header text-white">Informações importantes:</div><br>
+            <div style="text-align: center;">
+            <img src="src/aviaoIcone.png" width = "50" height = "50"><label for="text">Nosso checkin pode ser feito através do nosso site 48h antes do vôo</label><br>
+            <img src="src/bag.jpg" width = "50" height = "50"><label for="text">Bagagem incluída em sua tarifa:</label><br>
+            <label for="text">- 1 Bolsa ou mochila pequena embaixo do assento da frente</label><br>
+            <label for="text">- 1 Bagagem de mão de até 10KG</label><br>
+            <label for="text">Caso precise de bagagem adicional, deverá ser pago a taxa de despacho no aeroporto</label><br>
+            48h antes do vôo <a href="checkin.html" style="color: #026773;">Faça o checkin aqui</a>
+             
+              </div>
+              
+
             </div>
-          </div>
+            <br><br><br><br><br><br><br>
+            <br>
+            <div style="text-align: center;">
+            <div class="col">
+            <label class="form-check-label">Declaro que li e concordo com as restrições de bagagem</label>
+            </div>
+            <div class="col">
+            <label class="form-check-label" >Declaro que todas as informações são verdadeiras</label>
+            </div>
+            <label for="text">Pagamento seguro</label><br>
+            <div style="text-align: center;">
+              <button type="submit" class="btn btn-success active btn-custom">Finalizar pedido</button>
+            </div> 
         </div>
       
 
-      
 
 
       </div>
-      <div class="col-sm-3">
-dfgdfgdg
-      aasdasd
-      asdasd
-      
-      
-      </div>
-    </div>
-  </div>
+      </div>  
+  <br><br><br>
 
   <footer>
     <p>ROTA AIRLINES</p>
