@@ -83,110 +83,128 @@
 
     </div>
   </div>
-  <div style="background-color: #026773; text-align: center;" class="card-header text-white">Criar conta</div>
-  <br>
-  <div style="background-color: #026773;" class="card-header text-white">Dados pessoais</div>
-  <div class="card-header">
-    <form>
-      <div class="form-group">
-        <label for="selectPais">País:</label>
-        <select class="form-control" id="selectPais">
-          <option value="sel">Selecione um país</option>
-          <option value="brazil">Brasil</option>
-          <option value="argentina">Argentina</option>
-          <option value="eua">EUA</option>
-          <option value="japao">Japão</option>
-          <option value="outros">Outros</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="name">Nome completo:</label>
-        <input type="text" class="form-control" id="nome">
-      </div>
-      <div class="form-group">
-        <label for="dataNasc">Data de nascimento:</label>
-        <input type="date" class="form-control" id="dataNasc">
-      </div>
-      <div class="form-group">
-        <label for="inputCPF">CPF:</label>
-        <input type="text" class="form-control" id="inputCPF" placeholder="Digite o CPF" maxlength="11" pattern="\d{11}"
-          required>
-        <small id="cpfHelp" class="form-text text-muted">Digite apenas os números do CPF.</small>
-      </div>
-      <p>Sexo:</p>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="genero" value="masculino" id="radioMasculino">
-        <label class="form-check-label" for="radioMasculino">
-          Masculino
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="genero" value="feminino" id="radioFeminino">
-        <label class="form-check-label" for="radioFeminino">
-          Feminino
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="genero" value="outros" id="radioOutros">
-        <label class="form-check-label" for="radioOutros">
-          Outros
-        </label>
-      </div>
-      <div class="form-group">
-        <label for="numeroCelular">Número de Celular:</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">+55</span>
-          </div>
-          <input type="tel" class="form-control" id="numeroCelular" name="numeroCelular"
-            placeholder="Digite o número do celular">
+  <div class="container">
+    <div class="card-header text-white" style="background-color: #026773; text-align: center;">Criar conta</div>
+    <br>
+    <div class="card-header text-white" style="background-color: #026773;">Dados pessoais</div>
+    <div class="card-header">
+  
+      <!--Cadastro Sucesso-->
+      <form method="post" action="./fazCadastro.php">
+        <div class="form-group">
+  
+          <!-- PAIS -->
+          <label for="selectPais">País:</label>
+          <select class="form-control" id="selectPais" name="pais">
+            <option value="Brasil">Brasil</option>
+            <option value="Argentina">Argentina</option>
+            <option value="EUA">EUA</option>
+            <option value="Japão">Japão</option>
+            <option value="Outros">Outros</option>
+          </select>
         </div>
-
-      </div>
-    </form>
-  </div>
-  <div style="background-color: #026773;" class="card-header text-white">Dados de login para sua conta</div>
-  <div class="card-header">
-    <form>
+  
+        <!-- NOME COMPLETO -->
+        <div class="form-group">
+          <label for="name">Nome completo:</label>
+          <input type="text" class="form-control" id="nome" name="nome">
+        </div>
+  
+        <!-- Data Nascimento -->
+        <div class="form-group">
+          <label for="dataNasc">Data de nascimento:</label>
+          <input type="date" class="form-control" id="dataNasc" name="dataNasc">
+        </div>
+  
+        <!-- CPF -->
+        <div class="form-group">
+          <label for="inputCPF">CPF:</label>
+          <input type="text" name="cpf" class="form-control" id="inputCPF" placeholder="Digite o CPF" maxlength="11"
+            pattern="\d{11}" required>
+          <small id="cpfHelp" class="form-text text-muted">Digite apenas os números do CPF.</small>
+        </div>
+  
+        <!-- Sexo -->
+        <p>Sexo:</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" value="Masculino" id="radioMasculino" value="M">
+          <label class="form-check-label" for="radioMasculino">Masculino</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" value="Feminino" id="radioFeminino" value="F">
+          <label class="form-check-label" for="radioFeminino">Feminino</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" value="outros" id="radioOutros" value="O">
+          <label class="form-check-label" for="radioOutros">Outros</label>
+        </div>
+  
+        <!-- Numero Celular -->
+        <div class="form-group">
+          <label for="numeroCelular">Número de Celular:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">+55</span>
+            </div>
+            <input type="tel" class="form-control" id="numeroCelular" name="numeroCelular"
+              placeholder="Digite o número do celular">
+          </div>
+        </div>
+  
+  
+    </div>
+    <div class="card-header text-white" style="background-color: #026773;">Dados de login para sua conta</div>
+    <div class="card-header">
+  
+      <!-- email -->
       <div class="form-group">
         <label for="email">Endereço de E-mail:</label>
-        <input type="email" class="form-control" id="email" placeholder="Digite seu endereço de e-mail">
+        <input type="email" name="email" class="form-control" id="email" placeholder="Digite seu endereço de e-mail">
       </div>
+  
+      <!-- confirma email -->
       <div class="form-group">
         <label for="confirmaEmail">Confirme o endereço de E-mail:</label>
         <input type="email" class="form-control" id="confirmaEmail"
           placeholder="Digite novamente o seu endereço de e-mail">
       </div>
+  
+      <!-- senha -->
       <div class="form-group">
         <label for="senha">Senha:</label>
-        <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+        <input name="senha" type="password" class="form-control" id="senha" placeholder="Digite sua senha">
       </div>
+  
+  
+      <!-- confirma senha -->
       <div class="form-group">
         <label for="confirmaSenha">Confirme sua senha:</label>
         <input type="password" class="form-control" id="confirmaSenha" placeholder="Digite novamente sua senha">
       </div>
+  
+      <!-- cadastre-se -->
       <div style="text-align: center;">
-        <button type="submit" class="btn btn-success active btn-custom"
-          onclick="alert('Cadastro Realizado com Sucesso!')">Cadastrar-se</button>
+        <button type="submit" class="btn btn-success active btn-custom">Cadastrar-se</button>
       </div>
-    </form>
-  </div>
-  <div class="card-footer">
-    <div class="text-center">
-      Já possui uma conta? <a href="login.html" style="color: #026773;">Faça login</a>
     </div>
+  
+  
+    <div class="card-footer">
+      <div class="text-center">
+        Já possui uma conta? <a href="login.html" style="color: #026773;">Faça login</a>
+      </div>
+    </div>
+    </form>
+  
+  
+  
   </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </form>
-
+  <br>
   <footer>
     <p>ROTA AIRLINES</p>
     <p>© 2023 ROTA Airlines Brasil Rua Ática nº 673, 6º andar sala 62, CEP 12345-022 Salvador/BA CNPJ:
       07.020.202/0001-50</p>
   </footer>
-</body>
-
-</html>
+  </body>
+  
+  </html>
