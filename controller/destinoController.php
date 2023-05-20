@@ -1,5 +1,5 @@
 <?php
-class DestinosController
+class DestinoController
 {
     public function ofertasDestinos()
     {
