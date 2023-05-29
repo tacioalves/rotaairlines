@@ -1,4 +1,5 @@
 <?php
+require_once "../Model/Conexao.php";
 class Usuario {
     private $nomeUsuario;
     private $email;
@@ -10,6 +11,44 @@ class Usuario {
     private $senha;
     private $idUsuario;
 
+    public function cadastraUsuario(){   
+        $conectaBanco = new Conexao();
+        try{
+            $conn = $conectaBanco->conectar();
+            $sql = $conn->prepare ("insert into rotaairlines.tabelausuario (nomeUsuario, email, dtaNasc, sexo, paisNasc,  numTel, cpf, senha)
+            values (:nome, :emailUsuario, :nascUsuario, :sexoUsuario, :paisNascUsuario, :numTelUsuario, :cpfUsuario, :senha)");
+            $sql->bindParam("nome",$nomeUsuario);
+            $sql->bindParam("emailUsuario",$email);
+            $sql->bindParam("nascUsuario",$dtaNasc);
+            $sql->bindParam("sexoUsuario",$sexo);
+            $sql->bindParam("paisNascUsuario",$paisNasc);
+            $sql->bindParam("numTelUsuario",$numTel);
+            $sql->bindParam("cpfUsuario",$cpf);
+            $sql->bindParam("senha",$senha);
+            $nomeUsuario = $this->nomeUsuario;
+            $email = $this->email;
+            $dtaNasc = $this->dtaNasc;
+            $sexo = $this->sexo;
+            $paisNasc = $this->paisNasc;
+            $numTel = $this->numTel;
+            $cpf = $this->cpf;
+            $senha = $this->senha;
+            $idUsuario = $this->idUsuario;
+            $sql->execute();
+            echo "inserido com sucesso";
+            }
+           catch(PDOException $e)
+           {
+            echo "Connection failed: ". $e->getMessage();
+            }
+        
+            
+    }
+
+    public function loginUsuario($usuario)
+    {
+
+    }
     public function getNomeUsuario() {
         return $this->nomeUsuario;
     }

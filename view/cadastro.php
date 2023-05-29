@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,12 +91,12 @@
     <div class="card-header">
   
       <!--Cadastro Sucesso-->
-      <form method="post" action="./fazCadastro.php">
+      <form type="submit"  method="post" action="../controller/UsuarioController.php">
         <div class="form-group">
   
           <!-- PAIS -->
           <label for="selectPais">País:</label>
-          <select class="form-control" id="selectPais" name="pais">
+          <select class="form-control" id="selectPais" name="paisUsuario">
             <option value="Brasil">Brasil</option>
             <option value="Argentina">Argentina</option>
             <option value="EUA">EUA</option>
@@ -107,7 +108,7 @@
         <!-- NOME COMPLETO -->
         <div class="form-group">
           <label for="name">Nome completo:</label>
-          <input type="text" class="form-control" id="nome" name="nome">
+          <input type="text" class="form-control" id="nome" name="nomeUsuario">
         </div>
   
         <!-- Data Nascimento -->
