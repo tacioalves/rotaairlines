@@ -10,7 +10,9 @@ class VooController {
         $voo = new Voo();
         $voo ->setOrigemVoo($_POST['OrigemVoo']);
         $voo ->setDestinoVoo($_POST['DestinoVoo']);
-        $voo->buscaVoo();
+        $dataIda = ($_POST['dataIda']);
+        $dataVolta = ($_POST['dataVolta']);
+        $voo->buscaVoo($dataIda,$dataVolta);
         require_once "View/voos-disponiveis.php";
 
     }
@@ -24,6 +26,35 @@ class VooController {
 
     }
    
+    else if ($acao=="RC"){
+        if($_SESSION['usuario']['idUsuario']){
+        $idVooIda = ($_POST['vooIdaSelecionado']);
+        $idVooVolta = ($_POST['vooVoltaSelecionado']);
+        $voo = new Voo();
+        $voo->listaDadosVooCompra($idVooIda, $idVooVolta);
+        require_once "View/purchase.php";
+    }  else{
+        header("Location:LOGIN");
+    }
+
+    }
+
+    else if ($acao=="FC"){
+        $usuario = ($_POST['idUsuario']);
+        $voo = new Voo();
+        $voo->setIdVoo($_POST['idVooIda']);
+        $voo->setCodigoReserva($_POST['codReservaIda']);
+        $voo->finalizaCompra($usuario);
+
+        if(($_POST['idVooVolta'])){
+            $voo = new Voo();
+            $voo->setIdVoo($_POST['idVooVolta']);
+            $voo->setCodigoReserva($_POST['codReservaVolta']);
+            $voo->finalizaCompra($usuario);
+        }
+
+
+    }
 }
 
 

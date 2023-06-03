@@ -34,12 +34,11 @@
           </div>
           <div class="col">
             <h5 stylAF e="margin-top: 0; margin-bottom: 0.5em;">Data/Hora</h5>
-              <p style="font-weight: bold"><?php echo $voo->getListaVoosIda()[$cont]->getDataHora(); ?></p>
+              <p style="font-weight: bold"><?php echo $voo->getListaVoosIda()[$cont]->getDataHoraPartida(); ?></p>
           </div>
           <div class="col" style="text-align: center;">
             <br><br>
-            <input type="radio" id="ida_1" name="voo_ida" value="ida_1"> Selecionar</input>
-            <input type="hidden" name="idVooIda" value="<?php echo $voo->getListaVoosIda()[$cont]->getIdVoo(); ?>">
+            <input type="radio" id="ida<?php echo $cont; ?>" name="voo_ida" value="<?php echo $voo->getListaVoosIda()[$cont]->getIdVoo(); ?>"> Selecionar</input>
           </div>
         </div>
       </div>
@@ -65,12 +64,11 @@
           </div>
           <div class="col">
             <h5 stylAF e="margin-top: 0; margin-bottom: 0.5em;">Data/Hora</h5>
-              <p style="font-weight: bold"><?php echo $voo->getListaVoosVolta()[$cont]->getDataHora(); ?></p>
+              <p style="font-weight: bold"><?php echo $voo->getListaVoosVolta()[$cont]->getDataHoraPartida(); ?></p>
           </div>
           <div class="col" style="text-align: center;">
             <br><br>
-            <input type="radio" id="volta" name="voo_volta" value="volta"> Selecionar</input>
-            <input type="hidden" name="idVooVolta" value="<?php echo $voo->getListaVoosVolta()[$cont]->getIdVoo(); ?>">
+            <input type="radio" id="volta<?php echo $cont; ?>" name="voo_volta" value="<?php echo $voo->getListaVoosVolta()[$cont]->getIdVoo(); ?>"> Selecionar</input>
           </div>
         </div>
       </div>
@@ -78,10 +76,38 @@
     <br>
     <?php } ?>
     <div class="text-center">
-    <a class="btn btn-primary btn-custom"  href="COMPRA">Comprar</a>
+    <form type="submit" method="post" action="RESUMOCOMPRA">
+      <input type="hidden" name="vooIdaSelecionado" value="">
+      <input type="hidden" name="vooVoltaSelecionado" value="">
+      <button type="submit" class="btn btn-primary btn-custom">Comprar</a>
+    </form>
     </div>
     </div>
-  
+
+
+  <script>
+  // Adicionar evento de clique aos botões de rádio
+  var radios_volta = document.getElementsByName('voo_volta');
+  for (var i = 0; i < radios_volta.length; i++) {
+    radios_volta[i].addEventListener('click', function() {
+      var idVooVolta = this.value; // obter o ID do voo selecionado
+      console.log(idVooVolta); // fazer algo com o ID do voo selecionado
+      var inputElement = document.querySelector('input[name="vooVoltaSelecionado"]'); // Seleciona o elemento input pelo nome do atributo
+      inputElement.value = idVooVolta; // Define o valor do input igual à variável JavaScript
+    });
+
+  }
+
+  var radios_ida = document.getElementsByName('voo_ida');
+  for (var i = 0; i < radios_ida.length; i++) {
+    radios_ida[i].addEventListener('click', function() {
+      var idVooIda = this.value; // obter o ID do voo selecionado
+      console.log(idVooIda); // fazer algo com o ID do voo selecionado
+      var inputElement2 = document.querySelector('input[name="vooIdaSelecionado"]'); // Seleciona o elemento input pelo nome do atributo
+      inputElement2.value = idVooIda; // Define o valor do input igual à variável JavaScript
+    });
+  }
+</script>
 
   <br><br><br>
   <footer style="margin-top: 200px;">

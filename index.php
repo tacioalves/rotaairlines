@@ -42,13 +42,36 @@ else if ($url=="LOGIN"){
 
 } 
 
-
-else if ($url=="COMPRA"){
-    require_once "view/purchase.php";
+else if ($url=="RESUMOCOMPRA"){
+    require_once "Controller/VooController.php";
     $controle = new VooController();
-    $controle->processa("C"); 
+    $controle->processa("RC"); 
 
 } 
+
+else if ($url=="FINALIZACOMPRA"){
+    require_once "Controller/VooController.php";
+    $controle = new VooController();
+    $controle->processa("FC"); 
+
+} 
+
+else if ($url=="VALIDACHECKIN"){
+    require_once "Controller/CheckinController.php";
+    $controle = new CheckinController();
+    $controle->processa("PC"); 
+
+} 
+
+else if ($url=="CHECKINMARCAASSENTO"){
+    require_once "Controller/CheckinController.php";
+    $controle = new CheckinController();
+    $controle->processa("MC"); 
+
+} 
+
+
+
     
 
 ?>

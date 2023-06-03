@@ -2,16 +2,19 @@
 require_once "Model/Conexao.php";
 class Voo
 {
+
+
     private $idVoo;
     private $classeVoo;
     private $origemVoo;
     private $destinoVoo;
-    private $dataHora;
-    private $codReserva;
+    private $dataHoraPartida;
+    private $dataHoraChegada;
     private $numVoo;
     private $modeloAeronave;
     private $valorVoo;
     private $duracao;
+    private $codigoReserva;
     private $qtdPassagens;
     private $listaVoosIda = array();
     private $listaVoosVolta = array();
@@ -20,112 +23,144 @@ class Voo
 
 
 
-
-    public function buscaVoo(){
-        try{
+    public function buscaVoo($dataIda, $dataVolta)
+    {
+        try {
             $conn = Conexao::conectar();
-            $sql = $conn->prepare ("SELECT  idVoo , classeVoo , origemVOO , destinoVOO , dataHoraPartida , numVoo , modeloAeronave , 
-            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where origemVOO= :origemVoo AND destinoVOO = :destinoVoo");
-            $sql2 = $conn->prepare ("SELECT  idVoo , classeVoo , origemVOO , destinoVOO , dataHoraPartida , numVoo , modeloAeronave , 
-            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where origemVOO= :destinoVoo AND destinoVOO = :origemVoo");
-            $sql->bindParam("origemVoo",$origemVoo);
-            $sql->bindParam("destinoVoo",$destinoVoo);
-            $sql2->bindParam("origemVoo",$origemVoo);
-            $sql2->bindParam("destinoVoo",$destinoVoo);
+            $sql = $conn->prepare("SELECT  idVoo , classeVoo , origemVOO , destinoVOO , dataHoraPartida , numVoo , modeloAeronave , 
+            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where origemVOO= :origemVoo AND destinoVOO = :destinoVoo
+            AND DATE(dataHoraPartida) = :dataIda");
+
+            $sql2 = $conn->prepare("SELECT  idVoo , classeVoo , origemVOO , destinoVOO , dataHoraPartida , numVoo , modeloAeronave , 
+            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where origemVOO= :destinoVoo AND destinoVOO = :origemVoo
+            AND DATE(dataHoraPartida) = :dataVolta");
+
+            $sql->bindParam("origemVoo", $origemVoo);
+            $sql->bindParam("destinoVoo", $destinoVoo);
+            $sql->bindParam("dataIda", $dataIda);
+            $sql2->bindParam("origemVoo", $origemVoo);
+            $sql2->bindParam("destinoVoo", $destinoVoo);
+            $sql2->bindParam("dataVolta", $dataVolta);
             $origemVoo = $this->origemVoo;
             $destinoVoo = $this->destinoVoo;
-          
+            
+
             $sql->execute();
-           
-             $result=$sql->setFetchMode(PDO::FETCH_ASSOC);
-             while ($linha = $sql->fetch(PDO::FETCH_ASSOC))
-            { 
-                 
-                 
+           // echo "Query 1:";
+           // $sql->debugDumpParams();
+
+            $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+            while ($linha = $sql->fetch(PDO::FETCH_ASSOC)) {
+
+
                 $voo = new Voo();
                 $voo->setidVoo($linha['idVoo']);
                 $voo->setclasseVoo($linha['classeVoo']);
                 $voo->setorigemVoo($linha['origemVOO']);
                 $voo->setdestinoVoo($linha['destinoVOO']);
-                $voo->setdataHora($linha['dataHoraPartida']);
+                $voo->setDataHoraPartida($linha['dataHoraPartida']);
                 $voo->setnumVoo($linha['numVoo']);
                 $voo->setmodeloAeronave($linha['modeloAeronave']);
                 $voo->setvalorVoo($linha['valorVoo']);
-     
-                array_push($this->listaVoosIda,$voo);
-    
-                
+
+                array_push($this->listaVoosIda, $voo);
+
+
             }
 
-                     
+
             $sql2->execute();
-           
-             $result=$sql->setFetchMode(PDO::FETCH_ASSOC);
-             while ($linha = $sql2->fetch(PDO::FETCH_ASSOC))
-            { 
-                 
-                 
+
+            $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+            while ($linha = $sql2->fetch(PDO::FETCH_ASSOC)) {
+
+
                 $voo = new Voo();
                 $voo->setidVoo($linha['idVoo']);
                 $voo->setclasseVoo($linha['classeVoo']);
                 $voo->setorigemVoo($linha['origemVOO']);
                 $voo->setdestinoVoo($linha['destinoVOO']);
-                $voo->setdataHora($linha['dataHoraPartida']);
+                $voo->setDataHoraPartida($linha['dataHoraPartida']);
                 $voo->setnumVoo($linha['numVoo']);
                 $voo->setmodeloAeronave($linha['modeloAeronave']);
                 $voo->setvalorVoo($linha['valorVoo']);
-     
-                array_push($this->listaVoosVolta,$voo);
-    
-                
-            }
-          
-           }
-    
-           catch(PDOException $e)
-           {
-            echo "Connection failed: ". $e->getMessage();
-            }
-        
-        
-    }
 
-    public function listaDadosVooCompra($idVooIda, $idVooVolta){
-        try{
-            $conn = Conexao::conectar();
-            $sql = $conn->prepare ("SELECT  idVoo , classeVoo , origemVOO , destinoVOO , dataHoraPartida , numVoo , modeloAeronave , 
-            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where idVoo in (:idVooIda, :idVooVolta) ");
-            $sql->bindParam("idVooIda",$idVooIda);
-            $sql->bindParam("idVooVolta",$idVooVolta);
-          
-            $sql->execute();
-           
-             $result=$sql->setFetchMode(PDO::FETCH_ASSOC);
-             while ($linha = $sql->fetch(PDO::FETCH_ASSOC))
-            { 
-                 
-                 
-                $voo = new Voo();
-                $voo->setidVoo($linha['idVoo']);
-                $voo->setclasseVoo($linha['classeVoo']);
-                $voo->setorigemVoo($linha['origemVOO']);
-                $voo->setdestinoVoo($linha['destinoVOO']);
-                $voo->setdataHora($linha['dataHoraPartida']);
-                $voo->setnumVoo($linha['numVoo']);
-                $voo->setmodeloAeronave($linha['modeloAeronave']);
-                $voo->setvalorVoo($linha['valorVoo']);
-     
-                array_push($this->listaDadosVoo,$voo);
-    
-                
+                array_push($this->listaVoosVolta, $voo);
+
+
             }
 
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
         }
-        catch(PDOException $e)
-        {
-         echo "Connection failed: ". $e->getMessage();
-         }
+
+
     }
+
+    public function listaDadosVooCompra($idVooIda, $idVooVolta)
+    {
+        try {
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare("SELECT  idVoo , classeVoo , origemVOO , destinoVOO , dataHoraPartida , numVoo , modeloAeronave , 
+            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis, codReserva FROM  rotaairlines . tabelavoos where idVoo in (:idVooIda, :idVooVolta) ");
+            $sql->bindParam("idVooIda", $idVooIda);
+            $sql->bindParam("idVooVolta", $idVooVolta);
+
+            $sql->execute();
+
+            $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+            while ($linha = $sql->fetch(PDO::FETCH_ASSOC)) {
+
+
+                $voo = new Voo();
+                $voo->setidVoo($linha['idVoo']);
+                $voo->setclasseVoo($linha['classeVoo']);
+                $voo->setorigemVoo($linha['origemVOO']);
+                $voo->setdestinoVoo($linha['destinoVOO']);
+                $voo->setDataHoraPartida($linha['dataHoraPartida']);
+                $voo->setDataHoraChegada($linha['dataHoraPartida']);
+                $voo->setnumVoo($linha['numVoo']);
+                $voo->setmodeloAeronave($linha['modeloAeronave']);
+                $voo->setvalorVoo($linha['valorVoo']);
+                $voo->setCodigoReserva($linha['codReserva']);
+
+                array_push($this->listaDadosVoo, $voo);
+
+
+            }
+
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+    }
+
+
+    public function finalizaCompra($idUsuario)
+    {
+
+        try {
+            $conn = Conexao::conectar();
+
+            $sql = $conn->prepare("INSERT INTO rotaairlines.tabelareserva (codReserva, idVoo, idUsuario, assentoReservado) 
+            VALUES (:codReserva, :idVoo, :idUsuario, :assentoReservado);");
+
+
+            $sql->bindParam("codReserva", $codigoReserva);
+            $sql->bindParam("idVoo", $idVoo);
+            $sql->bindParam("idUsuario", $idUsuario);
+            $sql->bindParam("assentoReservado", $assentoReservado);
+            $codigoReserva = $this->codigoReserva;
+            $idVoo = $this->idVoo;
+            $assentoReservado = rand(1, 60);
+
+            $sql->execute();
+
+
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+    }
+
 
 
 
@@ -169,24 +204,24 @@ class Voo
         $this->destinoVoo = $destinoVoo;
     }
 
-    public function getDataHora()
+    public function getDataHoraPartida()
     {
-        return $this->dataHora;
+        return $this->dataHoraPartida;
     }
 
-    public function setDataHora($dataHora)
+    public function setDataHoraPartida($dataHoraPartida)
     {
-        $this->dataHora = $dataHora;
+        $this->dataHoraPartida = $dataHoraPartida;
     }
 
-    public function getCodReserva()
+    public function getDataHoraChegada()
     {
-        return $this->codReserva;
+        return $this->dataHoraChegada;
     }
 
-    public function setCodReserva($codReserva)
+    public function setDataHoraChegada($dataHoraChegada)
     {
-        $this->codReserva = $codReserva;
+        $this->dataHoraChegada = $dataHoraChegada;
     }
 
     public function getNumVoo()
@@ -239,23 +274,37 @@ class Voo
         $this->qtdPassagens = $qtdPassagens;
     }
 
+    public function getCodigoReserva()
+    {
+        return $this->codigoReserva;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getListaVoosIda() {
-		return $this->listaVoosIda;
-	}
-    public function getListaVoosVolta() {
-		return $this->listaVoosVolta;
-	}
+    public function setCodigoReserva($codigoReserva)
+    {
+        $this->codigoReserva = $codigoReserva;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getListaDadosVoo() {
-		return $this->listaDadosVoo;
-	}
+
+    /**
+     * @return mixed
+     */
+    public function getListaVoosIda()
+    {
+        return $this->listaVoosIda;
+    }
+    public function getListaVoosVolta()
+    {
+        return $this->listaVoosVolta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getListaDadosVoo()
+    {
+        return $this->listaDadosVoo;
+    }
+
 }
 
 

@@ -38,16 +38,20 @@ CREATE TABLE tabelaVoos (
   valorVoo DECIMAL(10, 2),
   dataHoraChegada DATETIME,
   imagemVoo VARCHAR(500),
-  assentosDisponiveis INT
+  assentosDisponiveis INT,
+  qtdPassagens INT,
+  duracao TIME,
+  codReserva varchar(6)
 );
 
 -- Criação da tabela tabelaReserva
 CREATE TABLE tabelaReserva (
   idReserva INT AUTO_INCREMENT PRIMARY KEY,
-  codReserva CHAR(6),
+  codReservaVoo VARCHAR(6),
   idVoo INT,
   idUsuario INT,
   assentoReservado INT,
+  validaCheckin INT
   FOREIGN KEY (idVoo) REFERENCES tabelaVoos(idVoo),
   FOREIGN KEY (idUsuario) REFERENCES tabelaUsuario(idUsuario)
 );

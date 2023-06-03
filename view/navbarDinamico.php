@@ -70,19 +70,15 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <form action="checkin.html">
+      <form type="submit" method="post" action="VALIDACHECKIN">
           <div class="form-group">
             <label for="email">Buscar Reserva por:</label>
-            <input type="text" value="Codigo da Reserva + Origem" class="form-control" readonly>
+            <input type="text" value="Codigo da Reserva" class="form-control" readonly>
           </div>
           <div class="form-group">
             <label for="pwd">Código da Reserva</label>
             <input type="text" class="form-control" id="pwd" placeholder="Digite o Código da Reserva" name="cdReserva">
           </div>
-          <div class="form-group">
-            <label for="pwd">Origem</label>
-            <input type="text" class="form-control" id="pwd" placeholder="Digite a Origem" name="origem">
-          </div><br>
           <button type="submit" class="btn btn-primary btn-custom" style="width: 100%;">Iniciar Chek-in</button>
         </form>
       </div>

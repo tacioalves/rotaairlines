@@ -40,15 +40,15 @@
       <div class="row" style="margin-left: 7%;">
         <div class="col-sm-11" style="margin-top: 30px ;">
           <form action="PESQUISAVOO" method="POST" type="submit" name="formDestino" id="formDestino">
-            <select class="form-select" id="tipoViagem" name="tipoViagem">
+            <select class="form-select" id="tipoViagem" name="tipoViagem" disabled>
               <option selected value="1">Ida e Volta</option>
               <option value="2">Somente Ida</option>
               <option value="3">Somente Volta</option>
             </select>
-            <select class="form-select" id="tipoClasse" name="tipoClasse">
+            <select class="form-select" id="tipoClasse" name="tipoClasse" disabled>
               <option selected value="1">Economica</option>
             </select>
-            <select class="form-select" id="quantidadePassageiros" name="quantidadePassageiros">
+            <select class="form-select" id="quantidadePassageiros" name="quantidadePassageiros" disabled>
               <option selected value="1">1 passageiro</option>
               <option value="2">2 passageiros</option>
               <option value="3">3 passageiros</option>
