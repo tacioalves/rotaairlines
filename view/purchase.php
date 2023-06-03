@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="view/styles/style.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,75 +15,9 @@
 </head>
 
 <body>
-  <!-- MENU SUPERIOR -->
-  <nav class="navbar navbar-expand-sm navbar-dark estilo-background-nav">
-    <!-- Brand -->
-    <a class="navbar-brand" href="index.html" id="tituloNav">ROTA<br>Airlines</a>
 
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Ofertas e destinos
-        </a>
-        <div class="dropdown-menu ">
-          <a class="dropdown-item" href="ofertasVoos.html">Ofertas de voos</a>
-          <a class="dropdown-item" href="destinos.html">Destinos</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle custom-nav-text nav-text-Custom" href="#" id="navbardrop"
-          data-toggle="dropdown">
-          Minhas Viagens
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Checkin</a>
-          <a class="dropdown-item" href="MeusDestinos.html">Meus Destinos</a>
-        </div>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="login.html"><span class="glyphicon glyphicon-log-in"></span> Fazer Login</a>
-      </li>
-    </ul>
-  </nav>
+ <?php include 'view/navbarDinamico.php'; ?>
 
-  <!-- CHECKIN -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Pronto para iniciar seu check-in?</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form action="checkin.html">
-            <div class="form-group">
-              <label for="email">Buscar Reserva por:</label>
-              <input type="text" value="Codigo da Reserva + Origem" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-              <label for="pwd">Código da Reserva</label>
-              <input type="text" class="form-control" id="pwd" placeholder="Digite o Código da Reserva"
-                name="cdReserva">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Origem</label>
-              <input type="text" class="form-control" id="pwd" placeholder="Digite a Origem" name="origem">
-            </div><br>
-            <button type="submit" class="btn btn-primary btn-custom" style="width: 100%;">Iniciar Chek-in</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        </div>
-      </div>
-    </div>
-  </div>
   <div style="background-color: #026773; text-align: center;" class="card-header text-white">Resumo do pedido e
     pagamento</div>
   <br>
@@ -97,23 +31,23 @@
             <div>
               <form style>
                 <label class="radio-inline">
-                  <input type="radio" name="card" value="visa" id="visa"><img src="src/visa_logo.png" width="30"
+                  <input type="radio" name="card" value="visa" id="visa"><img src="view/src/visa_logo.png" width="30"
                     height="12">
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="card" value="master" id="master"><img src="src/master_logo.png" width="30"
+                  <input type="radio" name="card" value="master" id="master"><img src="view/src/master_logo.png" width="30"
                     height="15">
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="card" value="elo" id="elo"><img src="src/elo_logo.png" width="30"
+                  <input type="radio" name="card" value="elo" id="elo"><img src="view/src/elo_logo.png" width="30"
                     height="15">
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="card" value="amex" id="amex"><img src="src/amex_logo.png" width="30"
+                  <input type="radio" name="card" value="amex" id="amex"><img src="view/src/amex_logo.png" width="30"
                     height="15">
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="card" value="hiper" id="hiper"><img src="src/hiper_logo.png" width="30"
+                  <input type="radio" name="card" value="hiper" id="hiper"><img src="view/src/hiper_logo.png" width="30"
                     height="15">
                 </label>
               </form>
@@ -162,37 +96,37 @@
       </div>
       </form>
 
-
+      <?php for ($cont=0;$cont<count($voo->getListaVoosIda());$cont++)
+      { ?>
       <div class="col-sm-4">
         <div class="card">
           <div style="background-color: #026773; text-align: center;" class="card-header text-white">Resumo do seu
             pedido:</div><br>
           <div style="text-align: center;">
-            <img src="src/aviaoIcone.png" width="50" height="50"><label for="text">Número do pedido
+            <img src="view/src/aviaoIcone.png" width="50" height="50"><label for="text">Número do pedido
               #1651651231</label><br>
             <label for="text"><strong>Dados do pedido:</strong></label><br>
-            <label for="text">REC ➜ SSA</label><br>
-            <label for="text">Origem: Recife ----- Vôo com saída às 19:40 do dia 10/05/2023</label><br>
-            <label for="text">Destino: Salvador -------- Chegada às 21:10 do dia 10/05/2023</label>
-            <label for="text">Classe diamante</label><br>
-            <label for="text">Valor: R$ 2743,27</label><br>
-            <label for="text">Sem bagagem despachada</label><br>
+            <label for="text">Origem: <?php echo $voo->getListaDadosVoo()[$cont]->getOrigemVoo(); ?> ----- <?php echo $voo->getListaDadosVoo()[$cont]->getDataHora(); ?></label><br>
+            <label for="text">Destino: <?php echo $voo->getListaDadosVoo()[$cont]->getDestinoVoo(); ?> -------- <?php echo $voo->getListaDadosVoo()[$cont]->getDataHora(); ?></label>
+            <label for="text"><?php echo $voo->getListaDadosVoo()[$cont]->getClasseVoo(); ?></label><br>
+            <label for="text">Valor: <?php echo $voo->getListaDadosVoo()[$cont]->getValorVoo(); ?></label><br>
             <label for="text">Código da reserva: <strong>HPRFIF</strong></label><br>
-            <label for="text">Vôo de nº <strong>RO3356</strong></label><br>
+            <label for="text"><?php echo $voo->getListaDadosVoo()[$cont]->getNumVoo(); ?> <strong>RO3356</strong></label><br>
             <label for="text">Início do embarque: <strong>18:50</strong></label><br>
             <label for="text">Fim do embarque: <strong>19:25</strong></label><br>
             
           </div>
         </div>
       </div>
+      <?php } ?>
       <div class="col-sm-4">
         <div class="card">
           <div style="background-color: #026773; text-align: center;" class="card-header text-white">Informações
             importantes:</div><br>
           <div style="text-align: center;">
-            <img src="src/aviaoIcone.png" width="50" height="50"><label for="text">Nosso checkin pode ser feito através
+            <img src="view/src/aviaoIcone.png" width="50" height="50"><label for="text">Nosso checkin pode ser feito através
               do nosso site 48h antes do vôo</label><br>
-            <img src="src/bag.jpg" width="50" height="50"><label for="text">Bagagem incluída em sua tarifa:</label><br>
+            <img src="view/src/bag.jpg" width="50" height="50"><label for="text">Bagagem incluída em sua tarifa:</label><br>
             <label for="text">- 1 Bolsa ou mochila pequena embaixo do assento da frente</label><br>
             <label for="text">- 1 Bagagem de mão de até 10KG</label><br>
             <label for="text">Caso precise de bagagem adicional, deverá ser pago a taxa de despacho no

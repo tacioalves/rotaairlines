@@ -12,8 +12,9 @@ CREATE TABLE tabelaUsuario (
   dtaNasc DATE NOT NULL,
   paisNasc VARCHAR(20) NOT NULL,
   numTel BIGINT NOT NULL,
-  cpf BIGINT NOT NULL UNIQUE,
-  senha VARCHAR(100) NOT NULL
+  cpf char(11) NOT NULL UNIQUE,
+  senha VARCHAR(100) NOT NULL,
+  sexo char(1) 
 );
 
 -- Criação da tabela tabelaReclamacao

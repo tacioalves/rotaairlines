@@ -1,5 +1,5 @@
 <?php
-require_once "../Model/Conexao.php";
+require_once "Model/Conexao.php";
 class Usuario {
     private $nomeUsuario;
     private $email;
@@ -12,11 +12,10 @@ class Usuario {
     private $idUsuario;
 
     public function cadastraUsuario(){   
-        $conectaBanco = new Conexao();
         try{
-            $conn = $conectaBanco->conectar();
-            $sql = $conn->prepare ("insert into rotaairlines.tabelausuario (nomeUsuario, email, dtaNasc, sexo, paisNasc,  numTel, cpf, senha)
-            values (:nome, :emailUsuario, :nascUsuario, :sexoUsuario, :paisNascUsuario, :numTelUsuario, :cpfUsuario, :senha)");
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare ("insert into rotaairlines.tabelausuario (nomeUsuario, email, dtaNasc, paisNasc,  numTel, cpf, senha, sexo)
+            values (:nome, :emailUsuario, :nascUsuario, :paisNascUsuario, :numTelUsuario, :cpfUsuario, :senha, :sexoUsuario)");
             $sql->bindParam("nome",$nomeUsuario);
             $sql->bindParam("emailUsuario",$email);
             $sql->bindParam("nascUsuario",$dtaNasc);
@@ -33,9 +32,7 @@ class Usuario {
             $numTel = $this->numTel;
             $cpf = $this->cpf;
             $senha = $this->senha;
-            $idUsuario = $this->idUsuario;
             $sql->execute();
-            echo "inserido com sucesso";
             }
            catch(PDOException $e)
            {
@@ -43,6 +40,42 @@ class Usuario {
             }
         
             
+    }
+
+
+    public function login(){   
+        try{
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare ("select idUsuario, nomeUsuario from rotaairlines.tabelausuario where cpf = :cpfUsuario AND senha = :senha");
+            $sql->bindParam("cpfUsuario",$cpf);
+            $sql->bindParam("senha",$senha);
+            $cpf = $this->cpf;
+            $senha = $this->senha;
+            $sql->execute();
+            $resultado = $sql->fetch();
+
+            if ($resultado) {
+                $usuario = array(
+                    'idUsuario' => $resultado['idUsuario'],
+                    'nomeUsuario' =>$resultado['nomeUsuario']
+                );
+                $_SESSION['usuario'] = $usuario;
+            }
+            else{
+                echo "Credenciais Incorretas";
+            }
+            }
+           catch(PDOException $e)
+           {
+            echo "Connection failed: ". $e->getMessage();
+            }
+        
+            
+    }
+
+
+    public function deslogar(){   
+        session_destroy();           
     }
 
     public function loginUsuario($usuario)

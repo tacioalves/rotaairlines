@@ -1,7 +1,7 @@
 <?php
 
 class Conexao{
-    public function conectar(){
+    public static function conectar(){
         $servername = "localhost";
         $username = "root";
         $password = "";

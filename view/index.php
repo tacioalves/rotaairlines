@@ -7,94 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="view/styles/style.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
-  <!-- MENU SUPERIOR -->
-  <nav class="navbar navbar-expand-sm navbar-dark estilo-background-nav">
-    <!-- Brand -->
-    <a class="navbar-brand" href="index.html" id="tituloNav">ROTA<br>Airlines</a>
-
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Ofertas e destinos
-        </a>
-        <div class="dropdown-menu ">
-          <a class="dropdown-item" href="ofertasVoos.html">Ofertas de voos</a>
-          <a class="dropdown-item" href="destinos.html">Destinos</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle custom-nav-text nav-text-Custom" href="#" id="navbardrop"
-          data-toggle="dropdown">
-          Minhas Viagens
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Checkin</a>
-          <a class="dropdown-item" href="MeusDestinos.html">Meus Destinos</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle custom-nav-text nav-text-Custom" href="#" id="navbardrop"
-          data-toggle="dropdown">
-          Sobre a Rota
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Sobre</a>
-          <a class="dropdown-item" href="MeusDestinos.html">Reclamações e Sugestões</a>
-        </div>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="login.html"><span class="glyphicon glyphicon-log-in"></span> Fazer Login</a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- CHECKIN -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Pronto para iniciar seu check-in?</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form action="checkin.html">
-            <div class="form-group">
-              <label for="email">Buscar Reserva por:</label>
-              <input type="text" value="Codigo da Reserva + Origem" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-              <label for="pwd">Código da Reserva</label>
-              <input type="text" class="form-control" id="pwd" placeholder="Digite o Código da Reserva"
-                name="cdReserva">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Origem</label>
-              <input type="text" class="form-control" id="pwd" placeholder="Digite a Origem" name="origem">
-            </div><br>
-            <button type="submit" class="btn btn-primary btn-custom" style="width: 100%;">Iniciar Chek-in</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
+  <?php include 'view/navbarDinamico.php'; ?>
   <!-- BANNER PRINCIPAL -->
   <div class="container-fluid" id="container-Inicio">
     <div class="container">
@@ -106,7 +26,7 @@
           <hr class="d-sm-none">
         </div>
         <div class="col-sm-8">
-          <img src="src/aviaoLogo.jpg" style="width: 100%; border-radius: 20px;">
+          <img src="view/src/aviaoLogo.jpg" style="width: 100%; border-radius: 20px;">
           <br>
         </div>
       </div>
@@ -119,7 +39,7 @@
     <div class="container" id="container-pesquisa-voo">
       <div class="row" style="margin-left: 7%;">
         <div class="col-sm-11" style="margin-top: 30px ;">
-          <form action="voos-disponiveis.html" method="GET" name="formDestino" id="formDestino">
+          <form action="PESQUISAVOO" method="POST" type="submit" name="formDestino" id="formDestino">
             <select class="form-select" id="tipoViagem" name="tipoViagem">
               <option selected value="1">Ida e Volta</option>
               <option value="2">Somente Ida</option>
@@ -127,8 +47,6 @@
             </select>
             <select class="form-select" id="tipoClasse" name="tipoClasse">
               <option selected value="1">Economica</option>
-              <option value="2">Economica Premium</option>
-              <option value="3">Economica Business</option>
             </select>
             <select class="form-select" id="quantidadePassageiros" name="quantidadePassageiros">
               <option selected value="1">1 passageiro</option>
@@ -138,10 +56,10 @@
             </select>
             <div class="row" style="margin-top: 20px;">
               <div class="col">
-                <input type="text" class="form-control" id="email" placeholder="Digite a Origem" name="origem">
+                <input type="text" class="form-control" id="email" placeholder="Digite a Origem" name="OrigemVoo">
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Digite o Destino" name="destino">
+                <input type="text" class="form-control" placeholder="Digite o Destino" name="DestinoVoo">
               </div>
             </div>
             <div class="row" style="margin-top: 20px;">
@@ -170,7 +88,7 @@
     <div class="row" style="margin-bottom: 5vh;">
       <div class="col-md-4">
         <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="src/brasilia.jpeg" alt="Card image" style="width:100%">
+          <img class="card-img-top" src="view/src/brasilia.jpeg" alt="Card image" style="width:100%">
           <div class="card-body">
             <h4 class="card-title">Brasilia</h4>
             <p class="card-text">Preço final a partir de: </p>
@@ -181,7 +99,7 @@
       </div>
       <div class="col-md-4">
         <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="src/sp.jpg" alt="Card image" style="width:100%">
+          <img class="card-img-top" src="view/src/sp.jpg" alt="Card image" style="width:100%">
           <div class="card-body">
             <h4 class="card-title">São Paulo</h4>
             <p class="card-text">Preço final a partir de: </p>
@@ -192,7 +110,7 @@
       </div>
       <div class="col-md-4">
         <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="src/rioPhoto.jpg" alt="Card image" style="width:100%;">
+          <img class="card-img-top" src="view/src/rioPhoto.jpg" alt="Card image" style="width:100%;">
           <div class="card-body">
             <h4 class="card-title">Rio de Janeiro</h4>
             <p class="card-text">Preço final a partir de: </p>
@@ -212,7 +130,7 @@
       <div class="col-md-6">
         <a href="ofertasVoos.html">
           <div class="card" style="width: 100%;">
-            <img class="card-img-top" src="src/turistaImag.gif" alt="Card image" style="width:100%">
+            <img class="card-img-top" src="view/src/turistaImag.gif" alt="Card image" style="width:100%">
         </a>
         <div class="card-body">
           <h3 class="card-title">Aproveite ofertas em voos pelo Brasil e o mundo!</h3>
@@ -222,7 +140,7 @@
     <div class="col-md-6">
       <a href="#">
         <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="src/turista2imag.gif" alt="Card image" style="width:100%">
+          <img class="card-img-top" src="view/src/turista2imag.gif" alt="Card image" style="width:100%">
       </a>
       <div class="card-body">
         <h4 class="card-title">Compre Passagens e Ganhe pontos em compras utilizando nosso app</h4>
