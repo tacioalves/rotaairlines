@@ -25,16 +25,6 @@
         <a class="dropdown-item" href="MeusDestinos.html">Meus Destinos</a>
       </div>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle custom-nav-text nav-text-Custom" href="#" id="navbardrop"
-        data-toggle="dropdown">
-        Sobre a Rota
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Sobre</a>
-        <a class="dropdown-item" href="MeusDestinos.html">Reclamações e Sugestões</a>
-      </div>
-    </li>
   </ul>
   <ul class="navbar-nav ml-auto">
     <?php if (isset($_SESSION['usuario'])): ?>

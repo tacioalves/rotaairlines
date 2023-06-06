@@ -5,6 +5,14 @@ class Reserva
     private $idReserva;
     private $idUsuario;
 
+
+
+    public function listaReservas(){
+        
+    }
+
+
+
     public function getVooReserva()
     {
         return $this->vooReserva;

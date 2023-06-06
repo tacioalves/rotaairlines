@@ -30,13 +30,21 @@ class CheckinController
 
 
 
+        } else if ($acao == "FC") {
+            $checkin = new Checkin();
+            $checkin->setCodReserva($_POST['cdReserva']);
+            $checkin->validaCheckin();
+            require_once "View/index.php";
+
+
+
+
         }
 
-    }
-    public function validaCheckin($Reserva, $Usuario)
-    {
+        
 
     }
+   
 }
 
 

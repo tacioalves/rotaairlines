@@ -141,7 +141,7 @@ class Voo
         try {
             $conn = Conexao::conectar();
 
-            $sql = $conn->prepare("INSERT INTO rotaairlines.tabelareserva (codReserva, idVoo, idUsuario, assentoReservado) 
+            $sql = $conn->prepare("INSERT INTO rotaairlines.tabelareserva (codReservaVoo, idVoo, idUsuario, assentoReservado) 
             VALUES (:codReserva, :idVoo, :idUsuario, :assentoReservado);");
 
 
@@ -160,6 +160,7 @@ class Voo
             echo "Connection failed: " . $e->getMessage();
         }
     }
+    
 
 
 

@@ -70,6 +70,26 @@ else if ($url=="CHECKINMARCAASSENTO"){
 
 } 
 
+else if ($url=="FINALIZACHECKIN"){
+    require_once "Controller/CheckinController.php";
+    $controle = new CheckinController();
+    $controle->processa("FC"); 
+
+} 
+
+else if ($url=="RECLAMACAO"){
+    require_once "view/reclamacao.php";
+
+
+} 
+
+
+else if ($url=="DASHBOARD"){
+    require_once "view/account.php";
+
+
+} 
+
 
 
     

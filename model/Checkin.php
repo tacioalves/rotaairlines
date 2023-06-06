@@ -64,7 +64,22 @@ class Checkin
     }
     public function validaCheckin()
     {
+        
+        try {
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare("UPDATE rotaairlines.tabelareserva SET validaCheckin = 1 WHERE codReservaVoo = :codReserva;");
+            $sql->bindParam("codReserva", $codReserva);
+            $codReserva = $this->codReserva;
+            $codReserva = '%' . $codReserva . '%';
+            $sql->execute();
+            
 
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+
+
+        
     }
 
     /**

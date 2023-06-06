@@ -51,7 +51,7 @@ CREATE TABLE tabelaReserva (
   idVoo INT,
   idUsuario INT,
   assentoReservado INT,
-  validaCheckin INT
+  validaCheckin INT,
   FOREIGN KEY (idVoo) REFERENCES tabelaVoos(idVoo),
   FOREIGN KEY (idUsuario) REFERENCES tabelaUsuario(idUsuario)
 );
@@ -59,33 +59,15 @@ CREATE TABLE tabelaReserva (
 
 -- Insere 10 Voos Iniciais
 
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'São Paulo', 'Rio de Janeiro', '2023-06-01 10:00:00', 1234, 'Boeing 737', 250.00, '2023-06-01 11:30:00', 'imagem1.jpg', 150);
-
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'Nova York', 'Londres', '2023-06-05 15:30:00', 5678, 'Airbus A380', 1500.00, '2023-06-05 18:45:00', 'imagem2.jpg', 80);
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'São Paulo', 'Brasília', '2023-06-02 08:00:00', 2468, 'Airbus A320', 180.00, '2023-06-02 10:00:00', 'imagem3.jpg', 200);
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'Paris', 'Roma', '2023-06-03 14:30:00', 1357, 'Boeing 777', 1200.00, '2023-06-03 17:45:00', 'imagem4.jpg', 100);
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'Nova York', 'Los Angeles', '2023-06-04 12:00:00', 3698, 'Airbus A330', 350.00, '2023-06-04 15:30:00', 'imagem5.jpg', 150);
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'Tóquio', 'Sydney', '2023-06-06 16:15:00', 8024, 'Boeing 787', 2500.00, '2023-06-06 23:30:00', 'imagem6.jpg', 80);
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'Lisboa', 'Madrid', '2023-06-07 10:30:00', 4875, 'Airbus A350', 400.00, '2023-06-07 12:45:00', 'imagem7.jpg', 200);
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'Moscou', 'Pequim', '2023-06-08 13:45:00', 6239, 'Boeing 747', 1800.00, '2023-06-08 21:30:00', 'imagem8.jpg', 100);
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'São Francisco', 'Chicago', '2023-06-09 09:30:00', 9523, 'Airbus A380', 350.00, '2023-06-09 12:15:00', 'imagem9.jpg', 150);
-
-INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis)
-VALUES ('Econômica', 'Londres', 'Dubai', '2023-06-10 17:00:00', 7012, 'Boeing 767', 2000.00, '2023-06-10 23:45:00', 'imagem10.jpg', 80);
+INSERT INTO tabelaVoos (classeVoo, origemVOO, destinoVOO, dataHoraPartida, numVoo, modeloAeronave, valorVoo, dataHoraChegada, imagemVoo, assentosDisponiveis, qtdPassagens, duracao, codReserva)
+VALUES
+    ('Econômica', 'São Paulo', 'Rio de Janeiro', '2023-06-10 08:00:00', 12345, 'Boeing 737', 200.00, '2023-06-10 09:30:00', 'imagem1.jpg', 150, 0, '02:30:00', 'ABC123'),
+    ('Executiva', 'São Paulo', 'Belo Horizonte', '2023-06-11 10:30:00', 67890, 'Airbus A320', 350.00, '2023-06-11 12:00:00', 'imagem2.jpg', 100, 0, '01:30:00', 'DEF456'),
+    ('Econômica', 'São Paulo', 'Salvador', '2023-06-12 13:45:00', 54321, 'Boeing 747', 400.00, '2023-06-12 16:15:00', 'imagem3.jpg', 200, 0, '02:30:00', 'GHI789'),
+    ('Executiva', 'São Paulo', 'Recife', '2023-06-13 17:30:00', 98765, 'Airbus A380', 500.00, '2023-06-13 20:00:00', 'imagem4.jpg', 50, 0, '02:30:00', 'JKL012'),
+    ('Econômica', 'São Paulo', 'Curitiba', '2023-06-14 09:15:00', 24680, 'Embraer E190', 150.00, '2023-06-14 10:45:00', 'imagem5.jpg', 80, 0, '01:30:00', 'MNO345'),
+    ('Econômica', 'Rio de Janeiro', 'São Paulo', '2023-06-20 08:00:00', 12345, 'Boeing 737', 200.00, '2023-06-20 09:30:00', 'imagem1.jpg', 150, 0, '02:30:00', 'A5GF68'),
+    ('Executiva', 'Belo Horizonte', 'São Paulo', '2023-06-21 10:30:00', 67890, 'Airbus A320', 350.00, '2023-06-21 12:00:00', 'imagem2.jpg', 100, 0, '01:30:00', 'AH25F6'),
+    ('Econômica', 'Salvador', 'São Paulo', '2023-06-22 13:45:00', 54321, 'Boeing 747', 400.00, '2023-06-22 16:15:00', 'imagem3.jpg', 200, 0, '02:30:00', 'LO2UNA'),
+    ('Executiva', 'Recife', 'São Paulo', '2023-06-23 17:30:00', 98765, 'Airbus A380', 500.00, '2023-06-23 20:00:00', 'imagem4.jpg', 50, 0, '02:30:00', 'J8225A'),
+    ('Econômica', 'Curitiba', 'São Paulo', '2023-06-24 09:15:00', 24680, 'Embraer E190', 150.00, '2023-06-24 10:45:00', 'imagem5.jpg', 80, 0, '01:30:00', 'BLXS25');

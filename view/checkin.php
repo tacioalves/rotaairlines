@@ -108,11 +108,11 @@
 </div>
 
   <div class="container-fluid d-flex align-items-center justify-content-center" style="margin-top: 100px;">
-    <button class="btn btn-primary btn-custom" style="height: 80px;"
-      onclick="window.location.href='CHECKINMARCAASSENTO'">Continuar para confirmar viagem</button>
+    <button class="btn btn-primary btn-custom" style="height: 80px;" onclick="exibirDiv()"
+    id="meuBotao" >Continuar para confirmar viagem</button>
   </div><br><br><Br><br>
 
-  <div class="container">
+  <div id="minhaDiv" style="display: none;">  <div class="container">
     <h2>Confirmação Checkin</h2><br>
     <h5>Checkin Realizado com Sucesso!</h5><br>
     <h6 style="font-weight: bold;">Cartão de Embarque:</h6><br>
@@ -155,12 +155,22 @@
         <h5 style="font-weight: bold;"><?php echo $voo->getModeloAeronave()?></h5>
       </div>
     </div>
+    <form type="submit" method="post" action="FINALIZACHECKIN">
+        <input type="hidden" name="cdReserva" id="cdReserva"value= <?php echo $voo->getCodigoReserva()?>>
+        <button type="submit" class="btn btn-success active btn-custom">Finalizar Checkin</button>
+    </form>
   </div>
+</div>
   <footer style="margin-top: 200px;">
     <p>ROTA AIRLINES</p>
     <p>© 2023 ROTA Airlines Brasil Rua Ática nº 673, 6º andar sala 62, CEP 12345-022 Salvador/BA CNPJ:
       07.020.202/0001-50</p>
   </footer>
 </body>
-
+<script>
+function exibirDiv() {
+  var div = document.getElementById("minhaDiv");
+  div.style.display = "block";
+}
+</script>
 </html>
