@@ -7,22 +7,12 @@
   <ul class="navbar-nav">
     <!-- Dropdown -->
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Ofertas e destinos
-      </a>
-      <div class="dropdown-menu ">
-        <a class="dropdown-item" href="ofertasVoos.html">Ofertas de voos</a>
-        <a class="dropdown-item" href="destinos.html">Destinos</a>
-      </div>
-    </li>
-    <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle custom-nav-text nav-text-Custom" href="#" id="navbardrop"
         data-toggle="dropdown">
         Minhas Viagens
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Checkin</a>
-        <a class="dropdown-item" href="MeusDestinos.html">Meus Destinos</a>
       </div>
     </li>
   </ul>
@@ -35,8 +25,7 @@
           <?php echo $_SESSION['usuario']['nomeUsuario']; ?>
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Meu Dashboard</a>
-          <a class="dropdown-item" href="MeusDestinos.html">Reclamações e Sugestões</a>
+          <a class="dropdown-item" href="dashboard">Meu Dashboard</a>
           <a class="dropdown-item" href="DESLOGAR">Sair</a>
         </div>
       </li>

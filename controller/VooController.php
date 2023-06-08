@@ -29,8 +29,14 @@ class VooController {
     else if ($acao=="RC"){
         if($_SESSION['usuario']['idUsuario']){
         $idVooIda = ($_POST['vooIdaSelecionado']);
-        $idVooVolta = ($_POST['vooVoltaSelecionado']);
         $voo = new Voo();
+
+        if($_POST['vooVoltaSelecionado']){
+            $idVooVolta = ($_POST['vooVoltaSelecionado']);
+        }
+        else{
+            $idVooVolta = 0;
+        }
         $voo->listaDadosVooCompra($idVooIda, $idVooVolta);
         require_once "View/purchase.php";
     }  else{
@@ -51,8 +57,9 @@ class VooController {
             $voo->setIdVoo($_POST['idVooVolta']);
             $voo->setCodigoReserva($_POST['codReservaVolta']);
             $voo->finalizaCompra($usuario);
+            
         }
-
+        header("Location:HOME");
 
     }
 }

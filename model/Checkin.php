@@ -67,7 +67,7 @@ class Checkin
         
         try {
             $conn = Conexao::conectar();
-            $sql = $conn->prepare("UPDATE rotaairlines.tabelareserva SET validaCheckin = 1 WHERE codReservaVoo = :codReserva;");
+            $sql = $conn->prepare("UPDATE rotaairlines.tabelareserva SET validaCheckin = 1 WHERE codReservaVoo LIKE :codReserva;");
             $sql->bindParam("codReserva", $codReserva);
             $codReserva = $this->codReserva;
             $codReserva = '%' . $codReserva . '%';

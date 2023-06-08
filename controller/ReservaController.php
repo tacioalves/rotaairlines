@@ -1,28 +1,34 @@
 <?php
-require_once "../model/Usuario.php";
-require_once "../model/Reserva.php";
-require_once "../model/Voo.php";
+require_once "Model/Reserva.php";
 class ReservaController
 {
 
-    public $usuario = new Usuario();
-    public $reserva = new Reserva();
-    public $voo = new Voo();
-    public function listaReserva($usuario)
+    public function processa($acao)
     {
 
-    }
+        if ($acao == "LRE") {
+            $reserva = new Reserva();
+            $reserva->setIdUsuario($_SESSION['usuario']['idUsuario']);
+            $reserva->listaReservas();
+            require_once "View/meusvoos.php";
 
-    public function cancelaReserva($Reserva, $usuario)
-    {
+        } else if ($acao == "CV") {
+            $reserva = new Reserva();
+            $reserva->setIdReserva($_POST['idReserva']);
+            $reserva->listaReservaCancelamento();
+            require_once "View/cancelamento.php";
 
-    }
+        } else if ($acao == "CP") {
+            $reserva = new Reserva();
+            $reserva->setIdReserva($_POST['idReserva']);
+            $reserva->cancelaReserva();
+            header("Location:MEUSVOOS");
 
-    public function compraReserva($usuario, $voo)
-    {
 
+        }
     }
 }
+
 
 
 ?>

@@ -125,12 +125,8 @@
 
 
   </div>
-  <br>
-  <footer>
-    <p>ROTA AIRLINES</p>
-    <p>© 2023 ROTA Airlines Brasil Rua Ática nº 673, 6º andar sala 62, CEP 12345-022 Salvador/BA CNPJ:
-      07.020.202/0001-50</p>
-  </footer>
+
+  <?php include 'view/fooster.php'; ?>
 </body>
 
 </html>

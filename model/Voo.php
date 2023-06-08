@@ -18,8 +18,8 @@ class Voo
     private $qtdPassagens;
     private $listaVoosIda = array();
     private $listaVoosVolta = array();
-
     private $listaDadosVoo = array();
+    private $imagem;
 
 
 
@@ -62,6 +62,7 @@ class Voo
                 $voo->setnumVoo($linha['numVoo']);
                 $voo->setmodeloAeronave($linha['modeloAeronave']);
                 $voo->setvalorVoo($linha['valorVoo']);
+                $voo->setImagem($linha['imagemVoo']);
 
                 array_push($this->listaVoosIda, $voo);
 
@@ -84,6 +85,7 @@ class Voo
                 $voo->setnumVoo($linha['numVoo']);
                 $voo->setmodeloAeronave($linha['modeloAeronave']);
                 $voo->setvalorVoo($linha['valorVoo']);
+                $voo->setImagem($linha['imagemVoo']);
 
                 array_push($this->listaVoosVolta, $voo);
 
@@ -141,8 +143,8 @@ class Voo
         try {
             $conn = Conexao::conectar();
 
-            $sql = $conn->prepare("INSERT INTO rotaairlines.tabelareserva (codReservaVoo, idVoo, idUsuario, assentoReservado) 
-            VALUES (:codReserva, :idVoo, :idUsuario, :assentoReservado);");
+            $sql = $conn->prepare("INSERT INTO rotaairlines.tabelareserva (codReservaVoo, idVoo, idUsuario, assentoReservado, statusReserva) 
+            VALUES (:codReserva, :idVoo, :idUsuario, :assentoReservado, 'ATIVA');");
 
 
             $sql->bindParam("codReserva", $codigoReserva);
@@ -306,6 +308,22 @@ class Voo
         return $this->listaDadosVoo;
     }
 
+
+	/**
+	 * @return mixed
+	 */
+	public function getImagem() {
+		return $this->imagem;
+	}
+	
+	/**
+	 * @param mixed $imagem 
+	 * @return self
+	 */
+	public function setImagem($imagem): self {
+		$this->imagem = $imagem;
+		return $this;
+	}
 }
 
 

@@ -40,12 +40,11 @@
       <div class="row" style="margin-left: 7%;">
         <div class="col-sm-11" style="margin-top: 30px ;">
           <form action="PESQUISAVOO" method="POST" type="submit" name="formDestino" id="formDestino">
-            <select class="form-select" id="tipoViagem" name="tipoViagem" disabled>
+            <select class="form-select" id="tipoViagem" name="tipoViagem">
               <option selected value="1">Ida e Volta</option>
               <option value="2">Somente Ida</option>
-              <option value="3">Somente Volta</option>
             </select>
-            <select class="form-select" id="tipoClasse" name="tipoClasse" disabled>
+            <select class="form-select" id="tipoClasse" name="tipoClasse">
               <option selected value="1">Economica</option>
             </select>
             <select class="form-select" id="quantidadePassageiros" name="quantidadePassageiros" disabled>
@@ -56,20 +55,20 @@
             </select>
             <div class="row" style="margin-top: 20px;">
               <div class="col">
-                <input type="text" class="form-control" id="email" placeholder="Digite a Origem" name="OrigemVoo">
+                <input type="text" class="form-control" id="email" placeholder="Digite a Origem" name="OrigemVoo" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Digite o Destino" name="DestinoVoo">
+                <input type="text" class="form-control" placeholder="Digite o Destino" name="DestinoVoo" required>
               </div>
             </div>
             <div class="row" style="margin-top: 20px;">
               <div class="col">
                 <label for="dataIda" class="form-label">Data Ida</label>
-                <input type="date" class="form-control" name="dataIda">
+                <input type="date" class="form-control" name="dataIda"required>
               </div>
               <div class="col">
                 <label for="dataVolta" class="form-label">Data Volta</label>
-                <input type="date" class="form-control" name="dataVolta">
+                <input type="date" class="form-control" name="dataVolta" id="dataVolta">
               </div>
               <div class="col" style="margin-top: 31px;">
                 <button type="submit" class="btn btn-primary active btn-custom">Procurar</button>
@@ -83,45 +82,8 @@
 
   <!-- Ofertas de voos -->
 
-  <div class="container" style="margin-top: 200px;">
-    <h2>Ofertas de voo partindo de Salvador, Bahia</h2>
-    <div class="row" style="margin-bottom: 5vh;">
-      <div class="col-md-4">
-        <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="view/src/brasilia.jpeg" alt="Card image" style="width:100%">
-          <div class="card-body">
-            <h4 class="card-title">Brasilia</h4>
-            <p class="card-text">Preço final a partir de: </p>
-            <p class="card-text card-text-price">BRL 546,76</p>
-            <a href="purchase.html" class="btn btn-primary btn-custom">Comprar!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="view/src/sp.jpg" alt="Card image" style="width:100%">
-          <div class="card-body">
-            <h4 class="card-title">São Paulo</h4>
-            <p class="card-text">Preço final a partir de: </p>
-            <p class="card-text card-text-price">BRL 336,36</p>
-            <a href="purchase.html" class="btn btn-primary btn-custom">Comprar!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card" style="width: 100%;">
-          <img class="card-img-top" src="view/src/rioPhoto.jpg" alt="Card image" style="width:100%;">
-          <div class="card-body">
-            <h4 class="card-title">Rio de Janeiro</h4>
-            <p class="card-text">Preço final a partir de: </p>
-            <p class="card-text card-text-price">BRL 736,26</p>
-            <a href="purchase.html" class="btn btn-primary btn-custom">Comprar!</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
+  <br>  <br><br><br><br>
+
 
   <!-- Banner adicionais -->
 
@@ -149,11 +111,23 @@
   </div>
   </div>
   </div><br><br>
-  <footer>
-    <p>ROTA AIRLINES</p>
-    <p>© 2023 ROTA Airlines Brasil Rua Ática nº 673, 6º andar sala 62, CEP 12345-022 Salvador/BA CNPJ:
-      07.020.202/0001-50</p>
-  </footer>
+
+  <?php include 'view/fooster.php'; ?>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var formDestino = document.getElementById("formDestino");
+        var tipoViagem = document.getElementById("tipoViagem");
+        var dataVolta = document.getElementById("dataVolta");
+
+        formDestino.addEventListener("submit", function(event) {
+            if (tipoViagem.value === "1" && dataVolta.value === "") {
+                event.preventDefault(); // Impede o envio do formulário
+                alert("Por favor, selecione a data de volta.");
+            }
+        });
+    });
+</script>
+
 
 </html>

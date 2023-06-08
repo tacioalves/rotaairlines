@@ -15,7 +15,7 @@
 
 <body>
   <?php include 'view/navbarDinamico.php'; ?>
-  <br><br>
+ 
 
   <div class="container-fluid" id="container-account">
     <div class="container">
@@ -27,10 +27,9 @@
             <div class="card">
               <div style="background-color: #026773;" class="card-header text-white">Painel de acesso:</div>
               <div class="card-body">
-                <li><a href="account.html" style="color: #026773;">Minha conta</a></li>
-                <li><a href="meusVoos.html" style="color: #026773;">Acessar meus vôos</a></li>
-                <li><a href="minhasReclamacoes.html" style="color: #026773;">Acessar minhas reclamações</a></li>
-                <li><a href="logout.html" style="color: #026773;">Sair</a></li>
+                <li><a href="DASHBOARD" style="color: #026773;">Minha conta</a></li>
+                <li><a href="MEUSVOOS" style="color: #026773;">Acessar meus vôos</a></li>
+                <li><a href="MINHASRECLAMACOES" style="color: #026773;">Acessar minhas reclamações</a></li>
 
               </div>
             </div>
@@ -41,14 +40,97 @@
               <div style="background-color: #026773; text-align: center;" class="card-header text-white">Informações da
                 conta:</div><br>
               <div class="card-body">
-                <label for="text"><strong>Informações da conta:</strong></label></br>
-                <label for="text">Nome: Tacio Alves</label></br>
-                <label for="text">E-mail: tacio@gmail.com</label></br>
-                <label for="text">Telefone: 719999999</label></br>
-                <div style="text-align: center;">
-                  <a href="dados.html" style="color: #026773;">Editar dados</a>
-                  <a href="changePassword.html" style="color: #026773;">Editar senha</a>
+                <label for="text">
+                  <h4>Informações da conta:</h4>
+                </label></br>
+
+                <form type="submit" method="post" action="ALTERADADOS">
+                  <strong>Nome:</strong>
+                  <label class="exibicao" for="text">
+                    <?php echo $usuario->getNomeUsuario() ?>
+                  </label></br>
+                  <input type="text" name="nomeUsuario" class="form-control edicao" id="nome"
+                    value="<?php echo $usuario->getNomeUsuario() ?>">
+
+                  <strong>E-mail:</strong>
+                  <label class="exibicao" for="text">
+                    <?php echo $usuario->getEmail() ?>
+                  </label></br>
+                  <input type="email" name="email" class="form-control edicao" id="email"
+                    placeholder="Digite seu endereço de e-mail" value="<?php echo $usuario->getEmail() ?>">
+
+                  <strong>Telefone:</strong>
+                  <label class="exibicao" for="text">
+                    <?php echo $usuario->getNumTel() ?>
+                  </label></br>
+                  <input type="tel" class="form-control edicao" id="numeroCelular" name="numeroCelular"
+                    placeholder="Digite o número do celular" value="<?php echo $usuario->getNumTel() ?>">
+
+
+                  <strong>Data Nascimento:</strong>
+                  <label class="exibicao" for="text">
+                    <?php echo $usuario->getDtaNasc() ?>
+                  </label></br>
+                  <input type="date" class="form-control edicao" id="dataNasc" name="dataNasc"
+                    value="<?php echo $usuario->getDtaNasc() ?>">
+
+
+                  <strong>Pais Nascimento:</strong>
+                  <label class="exibicao" for="text">
+                    <?php echo $usuario->getPaisNasc() ?>
+                  </label></br>
+                  <select class="form-control edicao" id="selectPais" name="paisUsuario"
+                    value="<?php echo $usuario->getPaisNasc() ?>">
+                    <option value="Brasil">Brasil</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="EUA">EUA</option>
+                    <option value="Japão">Japão</option>
+                    <option value="Outros">Outros</option>
+                  </select>
+
+
+                  <strong>CPF:</strong>
+                  <label class="exibicao" for="text">
+                    <?php echo $usuario->getCpf() ?>
+                  </label></br>
+                  <input type="text" name="cpf" class="form-control edicao" id="inputCPF" placeholder="Digite o CPF"
+                    maxlength="11" pattern="\d{11}" value="<?php echo $usuario->getCpf() ?>">
+
+
+                  <strong>Sexo:</strong>
+                  <label class="exibicao" for="text">
+                    <?php echo $usuario->getSexo() ?>
+                  </label></br>
+                  <select class="form-control edicao" id="sexo" name="sexo" value="<?php echo $usuario->getSexo() ?>">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                    <option value="O">Outros</option>
+                  </select>
+                  <br>
+
+                  <div class="edicao">
+                    <strong>Senha:</strong>
+                    <input name="senha" type="password" class="form-control" id="senha" placeholder="Digite sua senha" value="<?php echo $usuario->getSenha() ?>">
+                    </select>
+                    <br>
+                  </div>
+
+
+
+                  <div style="text-align: center;" class="edicao">
+                    <button class="btn btn-primary btn-custom" onclick="exibirItens()">Concluir Ediçao</button><br><br>
+                  </div>
+                </form>
+
+                <div style="text-align: center;" class="exibicao">
+                  <button class="btn btn-primary btn-custom" onclick="alternarModoEdicao()">Editar
+                    Dados</button><br><br>
                 </div>
+
+                <div style="text-align: center;" class="edicao">
+                  <button class="btn btn-primary btn-custom" onclick="exibirItens()">Cancelar</button><br><br>
+                </div>
+
               </div>
 
             </div>
@@ -64,15 +146,41 @@
 
   </div>
 
-  <br><br><br><br>
-  <<br>
-    <br><br><br><br>
-    <<br>
-      <footer>
-        <p>ROTA AIRLINES</p>
-        <p>© 2023 ROTA Airlines Brasil Rua Ática nº 673, 6º andar sala 62, CEP 12345-022 Salvador/BA CNPJ:
-          07.020.202/0001-50</p>
-      </footer>
+  <?php include 'view/fooster.php'; ?>
+
 </body>
+<script>
+  // Função para exibir os itens da classe "exibicao" e ocultar os itens da classe "edicao"
+  function exibirItens() {
+    var exibicaoItens = document.getElementsByClassName("exibicao");
+    var edicaoItens = document.getElementsByClassName("edicao");
+
+    for (var i = 0; i < exibicaoItens.length; i++) {
+      exibicaoItens[i].style.display = "block";
+    }
+
+    for (var j = 0; j < edicaoItens.length; j++) {
+      edicaoItens[j].style.display = "none";
+    }
+  }
+
+  // Função para alternar entre exibição e edição ao clicar em "Editar dados"
+  function alternarModoEdicao() {
+    var exibicaoItens = document.getElementsByClassName("exibicao");
+    var edicaoItens = document.getElementsByClassName("edicao");
+
+    for (var i = 0; i < exibicaoItens.length; i++) {
+      exibicaoItens[i].style.display = "none";
+    }
+
+    for (var j = 0; j < edicaoItens.length; j++) {
+      edicaoItens[j].style.display = "block";
+    }
+  }
+
+  // Chamada da função para exibir os itens na inicialização
+  exibirItens();
+</script>
+
 
 </html>

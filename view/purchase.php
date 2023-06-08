@@ -85,16 +85,24 @@
                   style="width:200px; margin-left: 100px;" style="text-align: center;" placeholder="Apenas números">
               </div>
               <p>Número de parcelas:</p>
-              <?php 
-                $resumo = $voo->getListaDadosVoo()[0]->getValorVoo();
-                if($voo->getListaDadosVoo()[1]){
-                  $resumo += $voo->getListaDadosVoo()[1]->getValorVoo();
-                }
-               ?>
+              <?php
+              $resumo = $voo->getListaDadosVoo()[0]->getValorVoo();
+              if (count($voo->getListaDadosVoo()) > 1) {
+                $resumo += $voo->getListaDadosVoo()[1]->getValorVoo();
+              }
+              ?>
               <select>
-                <option value="1x">1x de R$: <?php echo $resumo; ?></option>
-                <option value="2x">2x de R$: <?php echo $resumo/2;?></option>
-                <option value="3x">3x de R$: <?php echo $resumo/3;?></option>
+                <option value="1x">1x de R$:
+                  <?php echo number_format($resumo / 1, 2); ?>
+
+                </option>
+                <option value="2x">2x de R$:
+                  <?php echo number_format($resumo / 2, 2); ?>
+
+                </option>
+                <option value="3x">3x de R$:
+                  <?php echo number_format($resumo / 3, 2); ?>
+                </option>
               </select>
           </div>
 
@@ -178,10 +186,16 @@
           </div>
           <label for="text">Pagamento seguro</label><br>
           <form type="submit" method="post" action="FINALIZACOMPRA">
-            <input type="hidden" name="codReservaIda" value=" <?php echo $voo->getListaDadosVoo()[0]->getCodigoReserva(); ?>">
+            <input type="hidden" name="codReservaIda"
+              value=" <?php echo $voo->getListaDadosVoo()[0]->getCodigoReserva(); ?>">
             <input type="hidden" name="idVooIda" value="<?php echo $voo->getListaDadosVoo()[0]->getIdVoo(); ?>">
-            <input type="hidden" name="codReservaVolta" value=" <?php echo $voo->getListaDadosVoo()[1]->getCodigoReserva(); ?>">
+            <?php if (count($voo->getListaDadosVoo()) > 1) {?>
+            <input type="hidden" name="codReservaVolta"
+              value=" <?php echo $voo->getListaDadosVoo()[1]->getCodigoReserva(); ?>">
             <input type="hidden" name="idVooVolta" value="<?php echo $voo->getListaDadosVoo()[1]->getIdVoo(); ?>">
+            <?php } else { ?>
+              <input type="hidden" name="idVooVolta" value="">
+            <?php } ?>
             <input type="hidden" name="idUsuario" value=" <?php echo $_SESSION['usuario']['idUsuario']; ?>">
             <button type="submit" class="btn btn-primary btn-custom">Finalizar Pedido</a>
           </form>
@@ -190,7 +204,11 @@
     </div>
   </div>
   <br><br><br>
-  <script>
+  
+  <?php include 'view/fooster.php'; ?>
+
+</body>
+<script>
     function gerarValorAleatorio() {
       var valor = '';
       for (var i = 0; i < 10; i++) {
@@ -205,12 +223,5 @@
     labelElement.innerText = valorAleatorio;
 
   </script>
-
-  <footer>
-    <p>ROTA AIRLINES</p>
-    <p>© 2023 ROTA Airlines Brasil Rua Ática nº 673, 6º andar sala 62, CEP 12345-022 Salvador/BA CNPJ:
-      07.020.202/0001-50</p>
-  </footer>
-</body>
 
 </html>

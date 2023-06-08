@@ -74,6 +74,72 @@ class Usuario {
     }
 
 
+    public function listaDadosUsuario()
+    {
+        try {
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare("SELECT nomeUsuario, email, dtaNasc, paisNasc, numTel, cpf, senha, sexo, senha FROM rotaairlines.tabelausuario WHERE idUsuario = :idUsuario;");
+            $sql->bindParam("idUsuario", $idUsuario);
+            $idUsuario = $this->idUsuario;
+            $sql->execute();
+    
+            $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+            $linha = $sql->fetch(PDO::FETCH_ASSOC);
+    
+            if ($linha) {
+                $usuario = new Usuario();
+                $usuario->setNomeUsuario($linha['nomeUsuario']);
+                $usuario->setEmail($linha['email']);
+                $usuario->setDtaNasc($linha['dtaNasc']);
+                $usuario->setPaisNasc($linha['paisNasc']);
+                $usuario->setNumTel($linha['numTel']);
+                $usuario->setCpf($linha['cpf']);
+                $usuario->setSexo($linha['sexo']);
+                $usuario->setSenha($linha['senha']);
+                return $usuario;
+            }
+    
+        } catch (PDOException $e) {
+            echo "Connection failed: ". $e->getMessage();
+        }
+    }
+
+    public function atualizaCadastro(){   
+        try{
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare ("UPDATE rotaairlines.tabelausuario SET nomeUsuario = :nome, email= :emailUsuario , dtaNasc= :nascUsuario, 
+            paisNasc=:paisNascUsuario, numTel=:numTelUsuario, cpf=:cpfUsuario, sexo= :sexoUsuario, senha= :senha
+            WHERE idUsuario = :idusuario ;");
+            $sql->bindParam("nome",$nomeUsuario);
+            $sql->bindParam("emailUsuario",$email);
+            $sql->bindParam("nascUsuario",$dtaNasc);
+            $sql->bindParam("sexoUsuario",$sexo);
+            $sql->bindParam("paisNascUsuario",$paisNasc);
+            $sql->bindParam("numTelUsuario",$numTel);
+            $sql->bindParam("cpfUsuario",$cpf);
+            $sql->bindParam("idusuario",$idUsuario);
+            $sql->bindParam("senha",$senha);
+            $idUsuario = $this->idUsuario;
+            $nomeUsuario = $this->nomeUsuario;
+            $email = $this->email;
+            $dtaNasc = $this->dtaNasc;
+            $sexo = $this->sexo;
+            $paisNasc = $this->paisNasc;
+            $numTel = $this->numTel;
+            $cpf = $this->cpf;
+            $senha = $this->senha;
+
+            $sql->execute();
+            }
+           catch(PDOException $e)
+           {
+            echo "Connection failed: ". $e->getMessage();
+            }
+        
+            
+    }
+    
+
     public function deslogar(){   
         session_destroy();           
     }
