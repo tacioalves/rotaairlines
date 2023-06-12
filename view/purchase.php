@@ -55,34 +55,55 @@
             <form>
               <div class="form-group">
                 <label for="text">Número do cartão:</label>
-                <input type="text" class="form-control" max id="numCartao" maxlength="16"
-                  style="width:200px; margin-left: 100px;" placeholder="Digite apenas números">
+                <div style="display: flex; justify-content: center;">
+                  <input type="text" class="form-control" id="numCartao" maxlength="16"
+                    style="width: 200px; margin: 0 auto; text-align: center;" placeholder="Digite apenas números">
+                </div>
               </div>
               <div class="form-group">
                 <label for="text">Nome do titular:</label>
-                <input type="text" class="form-control" id="nomeTitular" style="width:375px; margin-left: 20px;"
-                  placeholder="Digite o nome conforme o cartão">
+                <div style="display: flex; justify-content: center;">
+                  <div style="width: 375px; margin: 0 auto;">
+                    <input type="text" class="form-control" id="nomeTitular" style="width: 100%; text-align: center;"
+                      placeholder="Digite o nome conforme o cartão">
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="text">CPF:</label>
-                <input type="text" class="form-control" max id="cpf" maxlength="11"
-                  style="width:375px; margin-left: 20px;" style="text-align: center;"
-                  placeholder="Digite apenas números">
+                <div style="display: flex; justify-content: center;">
+                  <input type="text" class="form-control" id="nomeTitular" style="width: 375px; margin: 0 auto;"
+                    placeholder="Digite o nome conforme o cartão">
+                </div>
+
               </div>
               <div class="form-group">
                 <label for="text">Código de Segurança:</label>
-                <input type="text" class="form-control" max id="cvv" maxlength="3"
-                  style="width:70px; margin-left: 175px;" style="text-align: center;" placeholder="CVV">
+                <div style="display: flex; justify-content: center;">
+                  <div style="width: 70px; margin: 0 auto;">
+                    <input type="text" class="form-control" id="cvv" maxlength="3"
+                      style="width: 100%; text-align: center;" placeholder="CVV">
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="text">Endereço da fatura:</label>
-                <input type="text" class="form-control" max id="endereçoFatura" style="width:375px; margin-left: 20px;"
-                  style="text-align: center;" placeholder="Digite o endereço completo">
+                <div style="display: flex; justify-content: center;">
+                  <div style="width: 375px; margin: 0 auto;">
+                    <input type="text" class="form-control" id="endereçoFatura" style="width: 100%; text-align: center;"
+                      placeholder="Digite o endereço completo">
+                  </div>
+                </div>
+
               </div>
               <div class="form-group">
                 <label for="text">CEP:</label>
-                <input type="text" class="form-control" max id="cep" maxlength="8"
-                  style="width:200px; margin-left: 100px;" style="text-align: center;" placeholder="Apenas números">
+                <div style="display: flex; justify-content: center;">
+                  <div style="width: 200px; margin: 0 auto;">
+                    <input type="text" class="form-control" id="cep" maxlength="8"
+                      style="width: 100%; text-align: center;" placeholder="Apenas números">
+                  </div>
+                </div>
               </div>
               <p>Número de parcelas:</p>
               <?php
@@ -102,6 +123,15 @@
                 </option>
                 <option value="3x">3x de R$:
                   <?php echo number_format($resumo / 3, 2); ?>
+                </option>
+                <option value="3x">4x de R$:
+                  <?php echo number_format($resumo / 4, 2); ?>
+                </option>
+                <option value="3x">5x de R$:
+                  <?php echo number_format($resumo / 5, 2); ?>
+                </option>
+                <option value="3x">6x de R$:
+                  <?php echo number_format($resumo / 6, 2); ?>
                 </option>
               </select>
           </div>
@@ -189,10 +219,10 @@
             <input type="hidden" name="codReservaIda"
               value=" <?php echo $voo->getListaDadosVoo()[0]->getCodigoReserva(); ?>">
             <input type="hidden" name="idVooIda" value="<?php echo $voo->getListaDadosVoo()[0]->getIdVoo(); ?>">
-            <?php if (count($voo->getListaDadosVoo()) > 1) {?>
-            <input type="hidden" name="codReservaVolta"
-              value=" <?php echo $voo->getListaDadosVoo()[1]->getCodigoReserva(); ?>">
-            <input type="hidden" name="idVooVolta" value="<?php echo $voo->getListaDadosVoo()[1]->getIdVoo(); ?>">
+            <?php if (count($voo->getListaDadosVoo()) > 1) { ?>
+              <input type="hidden" name="codReservaVolta"
+                value=" <?php echo $voo->getListaDadosVoo()[1]->getCodigoReserva(); ?>">
+              <input type="hidden" name="idVooVolta" value="<?php echo $voo->getListaDadosVoo()[1]->getIdVoo(); ?>">
             <?php } else { ?>
               <input type="hidden" name="idVooVolta" value="">
             <?php } ?>
@@ -204,24 +234,24 @@
     </div>
   </div>
   <br><br><br>
-  
+
   <?php include 'view/fooster.php'; ?>
 
 </body>
 <script>
-    function gerarValorAleatorio() {
-      var valor = '';
-      for (var i = 0; i < 10; i++) {
-        valor += Math.floor(Math.random() * 10);
-      }
-      return valor;
+  function gerarValorAleatorio() {
+    var valor = '';
+    for (var i = 0; i < 10; i++) {
+      valor += Math.floor(Math.random() * 10);
     }
+    return valor;
+  }
 
-    // Obter a referência da etiqueta HTML (label)
-    var labelElement = document.getElementById('labelPedido');
-    var valorAleatorio = gerarValorAleatorio();
-    labelElement.innerText = valorAleatorio;
+  // Obter a referência da etiqueta HTML (label)
+  var labelElement = document.getElementById('labelPedido');
+  var valorAleatorio = gerarValorAleatorio();
+  labelElement.innerText = valorAleatorio;
 
-  </script>
+</script>
 
 </html>

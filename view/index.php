@@ -90,7 +90,7 @@
   <div class="container" style="margin-top: 100px;">
     <div class="row" style="margin-bottom: 5vh;">
       <div class="col-md-6">
-        <a href="ofertasVoos.html">
+        <a href="#">
           <div class="card" style="width: 100%;">
             <img class="card-img-top" src="view/src/turistaImag.gif" alt="Card image" style="width:100%">
         </a>
