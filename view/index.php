@@ -55,16 +55,19 @@
             </select>
             <div class="row" style="margin-top: 20px;">
               <div class="col">
-                <input type="text" class="form-control" id="email" placeholder="Digite a Origem" name="OrigemVoo" required>
+                <input type="text" class="form-control" id="origemVoo" oninput="pesquisar()"
+                  placeholder="Digite a Origem" name="OrigemVoo" required autocomplete="off">
+                <ul id="resultado-pesquisa" class="resultado-pesquisa"></ul>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Digite o Destino" name="DestinoVoo" required>
+                <input type="text" class="form-control" placeholder="Digite o Destino" oninput="pesquisarDestino()"  name="DestinoVoo" id="DestinoVoo" required autocomplete="off">
+                <ul id="resultado-pesquisaDestino" class="resultado-pesquisa"></ul>
               </div>
             </div>
             <div class="row" style="margin-top: 20px;">
               <div class="col">
                 <label for="dataIda" class="form-label">Data Ida</label>
-                <input type="date" class="form-control" name="dataIda"required>
+                <input type="date" class="form-control" name="dataIda" required>
               </div>
               <div class="col">
                 <label for="dataVolta" class="form-label">Data Volta</label>
@@ -82,7 +85,7 @@
 
   <!-- Ofertas de voos -->
 
-  <br>  <br><br><br><br>
+  <br> <br><br><br><br>
 
 
   <!-- Banner adicionais -->
@@ -115,18 +118,141 @@
   <?php include 'view/fooster.php'; ?>
 </body>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var formDestino = document.getElementById("formDestino");
-        var tipoViagem = document.getElementById("tipoViagem");
-        var dataVolta = document.getElementById("dataVolta");
+  document.addEventListener("DOMContentLoaded", function () {
+    var formDestino = document.getElementById("formDestino");
+    var tipoViagem = document.getElementById("tipoViagem");
+    var dataVolta = document.getElementById("dataVolta");
 
-        formDestino.addEventListener("submit", function(event) {
-            if (tipoViagem.value === "1" && dataVolta.value === "") {
-                event.preventDefault(); // Impede o envio do formulário
-                alert("Por favor, selecione a data de volta.");
-            }
-        });
+    formDestino.addEventListener("submit", function (event) {
+      if (tipoViagem.value === "1" && dataVolta.value === "") {
+        event.preventDefault(); // Impede o envio do formulário
+        alert("Por favor, selecione a data de volta.");
+      }
     });
+  });
+
+  var listaResultados = document.getElementById("resultado-pesquisa");
+  var campoOrigemVoo = document.getElementById("origemVoo");
+
+  campoOrigemVoo.addEventListener("input", function () {
+    if (campoOrigemVoo.value.trim() === "") {
+      listaResultados.style.display = "none";
+    } else {
+      pesquisar();
+    }
+  });
+
+  
+
+  function pesquisar() {
+    var texto = campoOrigemVoo.value;
+
+    // Limpa a lista de resultados
+    listaResultados.innerHTML = "";
+
+    // Verifica se o campo de pesquisa não está vazio
+    if (texto.trim() !== "") {
+      // Realiza a lógica de busca de resultados
+      var resultados = buscarResultados(texto);
+
+      // Adiciona cada resultado à lista de resultados
+      resultados.forEach(function (resultado) {
+        var li = document.createElement("li");
+        li.textContent = resultado;
+        li.addEventListener("click", function () {
+          campoOrigemVoo.value = resultado;
+          listaResultados.style.display = "none"; // Oculta a lista de resultados
+        });
+        listaResultados.appendChild(li);
+      });
+
+      listaResultados.style.display = "block"; // Exibe a lista de resultados
+    } else {
+      listaResultados.style.display = "none"; // Oculta a lista de resultados quando o campo estiver vazio
+    }
+  }
+
+  function buscarResultados(texto) {
+    // Implemente a lógica de busca dos resultados aqui
+
+    // Exemplo com uma lista de resultados pré-definida
+    var listaResultados = [
+      <?php
+      for ($cont = 0; $cont < count($voo->getListaDadosVoo()); $cont++) {
+        echo '"' . $voo->getListaDadosVoo()[$cont]->getOrigemVoo() . '"' . ',';
+      }
+      ?>
+    ];
+
+    // Filtra os resultados que correspondem ao texto digitado
+    var resultadosFiltrados = listaResultados.filter(function (resultado) {
+      return resultado.toLowerCase().includes(texto.toLowerCase());
+    });
+
+    return resultadosFiltrados;
+  }
+
+  //DESTINO
+
+
+  var listaResultadosDestino = document.getElementById("resultado-pesquisaDestino");
+  var campoOrigemVooDestino = document.getElementById("DestinoVoo");
+
+  campoOrigemVooDestino.addEventListener("input", function () {
+    if (campoOrigemVooDestino.value.trim() === "") {
+      listaResultadosDestino.style.display = "none";
+    } else {
+      pesquisarDestino();
+    }
+  });
+
+  function pesquisarDestino() {
+    var textoDestino = campoOrigemVooDestino.value;
+
+    // Limpa a lista de resultados
+    listaResultadosDestino.innerHTML = "";
+
+    // Verifica se o campo de pesquisa não está vazio
+    if (textoDestino.trim() !== "") {
+      // Realiza a lógica de busca de resultados
+      var resultadosDestino = buscarResultadosDestino(textoDestino);
+
+      // Adiciona cada resultado à lista de resultados
+      resultadosDestino.forEach(function (resultadoDestino) {
+        var lidest = document.createElement("li");
+        lidest.textContent = resultadoDestino;
+        lidest.addEventListener("click", function () {
+          campoOrigemVooDestino.value = resultadoDestino;
+          listaResultadosDestino.style.display = "none"; // Oculta a lista de resultados
+        });
+        listaResultadosDestino.appendChild(lidest);
+      });
+
+      listaResultadosDestino.style.display = "block"; // Exibe a lista de resultados
+    } else {
+      listaResultadosDestino.style.display = "none"; // Oculta a lista de resultados quando o campo estiver vazio
+    }
+  }
+
+  function buscarResultadosDestino(texto) {
+    // Implemente a lógica de busca dos resultados aqui
+
+    // Exemplo com uma lista de resultados pré-definida
+    var listaResultadosDestino = [
+      <?php
+      for ($cont = 0; $cont < count($voo->getListaDadosVoo()); $cont++) {
+        echo '"' . $voo->getListaDadosVoo()[$cont]->getOrigemVoo() . '"' . ',';
+      }
+      ?>
+    ];
+
+    // Filtra os resultados que correspondem ao texto digitado
+    var resultadosFiltradosDestino = listaResultadosDestino.filter(function (resultadoDestino) {
+      return resultadoDestino.toLowerCase().includes(texto.toLowerCase());
+    });
+
+    return resultadosFiltradosDestino;
+  }
 </script>
 
 

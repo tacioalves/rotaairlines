@@ -24,16 +24,16 @@
       <div class="col-md-6">
         <div class="card">
 
-          <div style="background-color: #026773;" class="card-header text-white">Login</div>
+          <div style="background-color: #026773; border-top-right-radius: 20px; border-top-left-radius: 20px;" class="card-header text-white">Login</div>
           <div class="card-body">
             <form type="submit" method="post" action="FAZLOGIN">
               <div class="form-group">
                 <label for="email">CPF</label>
-                <input type="TEXT" class="form-control" id="cpf" name="cpf">
+                <input type="TEXT" class="form-control" id="cpf" name="cpf" required>
               </div>
               <div class="form-group">
                 <label for="password">Senha:</label>
-                <input type="password" class="form-control" id="senha" name="senha">
+                <input type="password" class="form-control" id="senha" name="senha" required>
               </div>
               <div style="text-align: center;">
                 <button type="submit" class="btn btn-success active btn-custom">Login</button>
@@ -50,7 +50,8 @@
     </div>
   </div>
 
-  <?php include 'view/fooster.php'; ?>
-</body>
+</br>
+<?php include 'view/fooster.php'; ?>
 
+</body>
 </html>

@@ -16,9 +16,9 @@
 <body>
   <?php include 'view/navbarDinamico.php'; ?>
   <div class="container">
-    <div class="card-header text-white" style="background-color: #026773; text-align: center;">Criar conta</div>
+    <div class="card-header text-white" style="background-color: #026773; text-align: center; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">Criar conta</div>
     <br>
-    <div class="card-header text-white" style="background-color: #026773;">Dados pessoais</div>
+    <div class="card-header text-white" style="background-color: #026773; border-top-right-radius: 20px; border-top-left-radius: 20px; ">Dados pessoais</div>
     <div class="card-header">
 
       <!--Cadastro Sucesso-->
@@ -115,7 +115,7 @@
     </div>
 
 
-    <div class="card-footer">
+    <div class="card-footer" style="border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
       <div class="text-center">
         Já possui uma conta? <a href="LOGIN" style="color: #026773;">Faça login</a>
       </div>

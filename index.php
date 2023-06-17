@@ -3,13 +3,16 @@ session_start();
 $url = strtoupper($_GET['url']);
 
 if ($url=='HOME'|| $url=='INDEX'){
-    require_once "view/index.php";
+    require_once "Controller/VooController.php";
+    $controle = new VooController();
+    $controle->processa("I"); 
  }
 
 else if ($url=="CADASTRA"){
     require_once "Controller/UsuarioController.php";
     $controle = new UsuarioController();
     $controle->processa("C"); 
+   
  } 
 
  else if ($url=="FAZLOGIN"){

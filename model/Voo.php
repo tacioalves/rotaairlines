@@ -28,11 +28,11 @@ class Voo
         try {
             $conn = Conexao::conectar();
             $sql = $conn->prepare("SELECT  idVoo , classeVoo , origemVOO , destinoVOO , dataHoraPartida , numVoo , modeloAeronave , 
-            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where origemVOO= :origemVoo AND destinoVOO = :destinoVoo
+            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where origemVOO= :origemVoo AND destinoVOO = :destinoVoo AND qtdPassagens > 0
             AND DATE(dataHoraPartida) = :dataIda");
 
             $sql2 = $conn->prepare("SELECT  idVoo , classeVoo , origemVOO , destinoVOO , dataHoraPartida , numVoo , modeloAeronave , 
-            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where origemVOO= :destinoVoo AND destinoVOO = :origemVoo
+            valorVoo , dataHoraChegada , imagemVoo , assentosDisponiveis FROM  rotaairlines . tabelavoos where origemVOO= :destinoVoo AND destinoVOO = :origemVoo AND qtdPassagens > 0
             AND DATE(dataHoraPartida) = :dataVolta");
 
             $sql->bindParam("origemVoo", $origemVoo);
@@ -157,12 +157,40 @@ class Voo
 
             $sql->execute();
 
+            
+            $sql2 = $conn->prepare("UPDATE rotaairlines.tabelavoos SET qtdPassagens = (qtdPassagens - 1) WHERE idVoo = :idVoo");
+            $sql2->bindParam("idVoo", $idVoo);
+            $sql2->execute();
+
+
 
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
     }
     
+    
+    public function pesquisaVoo()
+    {
+        try {
+            $conn = Conexao::conectar();
+            $sql = $conn->prepare("SELECT  origemVOO FROM  rotaairlines.tabelavoos group by origemVOO ");
+            $sql->execute();
+
+
+            $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+            while ($linha = $sql->fetch(PDO::FETCH_ASSOC)) {
+
+                $voo = new Voo();
+                $voo->setorigemVoo($linha['origemVOO']);
+                array_push($this->listaDadosVoo, $voo);
+            }
+
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+    }
+
 
 
 

@@ -20,7 +20,7 @@ class Reclamacao
     {
         try {
             $conn = Conexao::conectar();
-            $sql = $conn->prepare("SELECT CONCAT('Cod Reserva:',codReservaVoo,'|',' Numero Voo:',tv.numvoo) as reserva, codReserva FROM rotaairlines.tabelareserva tr, rotaairlines.tabelavoos tv WHERE tr.idvoo = tv.idvoo AND tr.idusuario = :idusuario");
+            $sql = $conn->prepare("SELECT CONCAT('Cod Reserva:',codReservaVoo,'|',' Numero Voo:',tv.numvoo) as reserva, codReserva FROM rotaairlines.tabelareserva tr, rotaairlines.tabelavoos tv WHERE tr.idvoo = tv.idvoo AND tr.idusuario = :idusuario AND tr.statusReserva like '%ATIVA%'");
             $sql->bindParam("idusuario", $usuarioReclamacao);
             $usuarioReclamacao = $this->usuarioReclamacao;
             $sql->execute();

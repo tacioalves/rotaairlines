@@ -17,10 +17,11 @@ class CheckinController
                 require_once "View/checkin.php";
 
             } else {
-                echo '<script type="text/javascript">
-                     alert("Reserva Invalida!");
-                  </script>';
+ 
                 require_once "View/index.php";
+                echo '<script type="text/javascript">
+                alert("Reserva Invalida!");
+             </script>';
             }
 
 

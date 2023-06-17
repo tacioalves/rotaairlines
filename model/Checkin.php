@@ -25,7 +25,7 @@ class Checkin
                 tr.validaCheckin as validaCheckin, tr.assentoReservado as assentoReservado, tv.modeloAeronave modeloAeronave
                 FROM rotaairlines.tabelavoos tv 
                 JOIN rotaairlines.tabelareserva tr ON tv.idVoo = tr.idVoo JOIN rotaairlines.tabelausuario tu ON tu.idUsuario = tr.idUsuario 
-                WHERE tr.codReservaVoo LIKE :codReserva AND tr.idUsuario = :idUsuario");
+                WHERE tr.codReservaVoo LIKE :codReserva AND tr.idUsuario = :idUsuario AND tr.statusReserva like '%ATIVA%'");
 
 
                 $codReserva = '%' . $codReserva . '%';

@@ -64,9 +64,16 @@
                           <td>
                             <?php echo $reserva->getListaVooUsuario()[$cont]->getCodigoReserva(); ?>
                           </td>
-                          <td><button type="submit" class="btn btn-success active btn-custom btn-sm">Cancelar
-                              Voo</button><br></td>
-                          <td> <input type="hidden" name="idReserva" value="<?php echo $reserva->getListaReservaUsuario()[$cont]->getIdReserva(); ?>" />
+                          <?php if ($reserva->getListaReservaUsuario()[$cont]->getStatusReserva() == "Cancelada") { ?>
+                            <td><label>Voo Cancelado</label><br></td>
+                          <?php } else if ($reserva->getListaReservaUsuario()[$cont]->getValidaCheckin() == 1) { ?>
+                              <td><label>Checkin Já Realizado</label><br></td>
+                          <?php } else { ?>
+                              <td><button type="submit" class="btn btn-success active btn-custom btn-sm">Cancelar
+                                  Voo</button><br></td>
+                          <?php } ?>
+                          <td> <input type="hidden" name="idReserva"
+                              value="<?php echo $reserva->getListaReservaUsuario()[$cont]->getIdReserva(); ?>" />
                           </td>
                         </form>
                       </tr>

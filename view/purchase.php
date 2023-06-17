@@ -23,7 +23,7 @@
   <br>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4" style="text-align: center;">
+      <div class="col-sm-4" style="text-align: left;">
         <div class="card">
           <div style="background-color: #026773;" class="card-header text-white">Pagamento:</div>
           <div class="card-body">
@@ -55,42 +55,45 @@
             <form>
               <div class="form-group">
                 <label for="text">Número do cartão:</label>
-                <div style="display: flex; justify-content: center;">
+                <div style="display: flex; justify-content: left; align-items: left">
                   <input type="text" class="form-control" id="numCartao" maxlength="16"
-                    style="width: 200px; margin: 0 auto; text-align: center;" placeholder="Digite apenas números">
+                    style="width: 200px; display: flex; justify-content: left; align-items: left;"
+                    placeholder="Digite apenas números">
                 </div>
               </div>
               <div class="form-group">
                 <label for="text">Nome do titular:</label>
-                <div style="display: flex; justify-content: center;">
-                  <div style="width: 375px; margin: 0 auto;">
-                    <input type="text" class="form-control" id="nomeTitular" style="width: 100%; text-align: center;"
+                <div style="display: flex; justify-content: left; align-items: left ">
+                  <div>
+                    <input type="text" class="form-control" id="nomeTitular"
+                      style=" width: 250%; display: flex; justify-content: left; align-items: left;"
                       placeholder="Digite o nome conforme o cartão">
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="text">CPF:</label>
-                <div style="display: flex; justify-content: center;">
-                  <input type="text" class="form-control" id="nomeTitular" style="width: 375px; margin: 0 auto;"
+                <div style="display: flex; justify-content: left;">
+                  <input type="text" class="form-control" id="nomeTitular"
+                    style="width: 300px; display: flex; justify-content: left; align-items: left;"
                     placeholder="Digite o nome conforme o cartão">
                 </div>
 
               </div>
               <div class="form-group">
                 <label for="text">Código de Segurança:</label>
-                <div style="display: flex; justify-content: center;">
-                  <div style="width: 70px; margin: 0 auto;">
+                <div style="display: flex; justify-content: left; align-items: left;">
+                  <div>
                     <input type="text" class="form-control" id="cvv" maxlength="3"
-                      style="width: 100%; text-align: center;" placeholder="CVV">
+                      style="width: 100%; text-align: left;" placeholder="CVV">
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="text">Endereço da fatura:</label>
-                <div style="display: flex; justify-content: center;">
-                  <div style="width: 375px; margin: 0 auto;">
-                    <input type="text" class="form-control" id="endereçoFatura" style="width: 100%; text-align: center;"
+                <div style="display: flex; justify-content: left;">
+                  <div>
+                    <input type="text" class="form-control" id="endereçoFatura" style="width: 250%; text-align: left;"
                       placeholder="Digite o endereço completo">
                   </div>
                 </div>
@@ -98,10 +101,10 @@
               </div>
               <div class="form-group">
                 <label for="text">CEP:</label>
-                <div style="display: flex; justify-content: center;">
-                  <div style="width: 200px; margin: 0 auto;">
+                <div style="display: flex; justify-content: left;">
+                  <div>
                     <input type="text" class="form-control" id="cep" maxlength="8"
-                      style="width: 100%; text-align: center;" placeholder="Apenas números">
+                      style="width: 200px; text-align: left;" placeholder="Apenas números">
                   </div>
                 </div>
               </div>
@@ -144,14 +147,16 @@
         <div class="card">
           <div style="background-color: #026773; text-align: center;" class="card-header text-white">Resumo do seu
             pedido:</div><br>
-          <hr />
-          <div style="text-align: center;">
-            <label for="text"><strong>Dados do pedido:</strong></label><br>
-            <img src="view/src/aviaoIcone.png" width="50" height="50">
+          <label for="text" style="text-align: center;"><strong>Dados do pedido:</strong></label>
+
+          <div style="text-align: center;"> <img src="view/src/aviaoIcone.png" width="50" height="50">
             <label for="text"> Número do pedido: </label>
             <label for="text" id="labelPedido"></label><br>
-
+            <hr />
             <?php for ($cont = 0; $cont < count($voo->getListaDadosVoo()); $cont++) { ?>
+              <label for="text">Detalhe Voo:
+                <?php echo $voo->getListaDadosVoo()[$cont]->getNumVoo(); ?>
+              </label><br>
               <strong for="text">Origem:
                 <?php echo $voo->getListaDadosVoo()[$cont]->getOrigemVoo(); ?>
               </strong><br>

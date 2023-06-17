@@ -8,6 +8,9 @@ class Reserva
     private $idUsuario;
     private $codReservaVoo;
     private $statusReserva;
+
+    private $validaCheckin;
+
     private $listaReservaUsuario = array();
     private $listaVooUsuario = array();
 
@@ -16,8 +19,8 @@ class Reserva
     {
         try {
             $conn = Conexao::conectar();
-            $sql = $conn->prepare("SELECT idReserva,codReservaVoo, tv.numvoo, tv.origemVOO, tv.destinoVOO, statusReserva  
-            FROM rotaairlines.tabelareserva tr, rotaairlines.tabelavoos tv WHERE tr.idvoo = tv.idvoo AND tr.idusuario = :idusuario AND statusReserva like '%ATIVA%'");
+            $sql = $conn->prepare("SELECT idReserva,codReservaVoo, validaCheckin, tv.numvoo, tv.origemVOO, tv.destinoVOO, statusReserva  
+            FROM rotaairlines.tabelareserva tr, rotaairlines.tabelavoos tv WHERE tr.idvoo = tv.idvoo AND tr.idusuario = :idusuario ");
             $sql->bindParam("idusuario", $idUsuario);
             $idUsuario = $this->idUsuario;
             $sql->execute();
@@ -28,7 +31,7 @@ class Reserva
                 $reserva->setIdReserva($linha['idReserva']);
                 $reserva->setCodReservaVoo($linha['codReservaVoo']);
                 $reserva->setStatusReserva($linha['statusReserva']);
-
+                $reserva->setValidaCheckin($linha['validaCheckin']);
 
                 $voo = new Voo();
                 $voo->setNumVoo($linha['numvoo']);
@@ -204,6 +207,22 @@ class Reserva
         $this->statusReserva = $statusReserva;
         return $this;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getValidaCheckin() {
+		return $this->validaCheckin;
+	}
+	
+	/**
+	 * @param mixed $validaCheckin 
+	 * @return self
+	 */
+	public function setValidaCheckin($validaCheckin): self {
+		$this->validaCheckin = $validaCheckin;
+		return $this;
+	}
 }
 
 
