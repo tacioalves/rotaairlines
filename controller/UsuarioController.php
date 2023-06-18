@@ -9,7 +9,7 @@ class UsuarioController
         if ($acao == "C") {
             $novoUsuario = new Usuario();
             $novoUsuario->setCpf($_POST['cpf']);
-            $novoUsuario->setSenha($_POST['senha']);
+            $novoUsuario->setSenha(md5($_POST['senha']));
             $novoUsuario->setDtaNasc($_POST['dataNasc']);
             $novoUsuario->setEmail($_POST['email']);
             $novoUsuario->setNomeUsuario($_POST['nomeUsuario']);
@@ -24,7 +24,7 @@ class UsuarioController
         } else if ($acao == "L") {
             $novoUsuario = new Usuario();
             $novoUsuario->setCpf($_POST['cpf']);
-            $novoUsuario->setSenha($_POST['senha']);
+            $novoUsuario->setSenha(md5($_POST['senha']));
             $novoUsuario->login();
             header("Location:index");
 
